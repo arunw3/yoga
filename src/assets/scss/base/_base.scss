@@ -1,0 +1,270 @@
+// main: ../style.scss
+/********************************
+ *********************************
+ BASE
+ *********************************
+ *********************************/
+html {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  @extend %transition-base, %link-color, %link-hover-color;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  a:not(.btn) {
+    @extend %color-tertiary, %transition-base;
+    position: relative;
+    &::after {
+      content: '';
+      @include position(absolute, null 0 rem(0));
+      display: inline-block;
+      height: 1px;
+      @extend %bg-tertiary, %transition-base;
+      opacity: 0.1;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.text-white {
+  color: #fff;
+  a {
+    color: #fff;
+  }
+  .breadcrumb-item.active {
+    color: #fff;
+  }
+}
+
+small,
+.small {
+  letter-spacing: 0.08em;
+  @extend %font-size-sm;
+}
+
+.small-title {
+  letter-spacing: 0.1em;
+  @extend %font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.screen-reader-text {
+  @extend .sr-only;
+}
+
+hr {
+  margin: 2rem 0;
+  @extend %border-color-theme;
+}
+
+
+/* Generic Tables */
+table,
+th,
+td {
+	border-width: 1px;
+  border-style: solid;
+  @extend %border-color-theme;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 1px 0 0 1px;
+	margin: 0 0 1.75em;
+	table-layout: fixed;
+	/* Prevents HTML tables from becoming too wide */
+	width: 100%;
+}
+
+th {
+	border-width: 0 1px 1px 0;
+	font-weight: 600;
+}
+
+td {
+	border-width: 0 1px 1px 0;
+}
+
+th,
+td {
+	padding: 0.4375em;
+}
+
+
+/* Ribbon Styled Text (as used in slideshow) */
+.ribbon-text {
+  @extend .small, %bg-primary;
+  display: inline-block;
+  position: relative;
+  line-height: 1.41rem;
+  padding: 0 20px;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+
+  &::before,
+  &::after {
+    content: "";
+    @include position(absolute, .1875rem null null null);
+    display: inline-block;
+
+    @include size(1rem);
+    background: inherit;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+    left: -.5rem;
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+    right: -.5rem;
+  }
+
+  i::before,
+  i::after {
+    content: "";
+    position: absolute;
+    left: .15rem;
+    @extend %vertical-center;
+    @include size(.25rem);
+    border-radius: .25rem;
+    background: #fff;
+    z-index: 9;
+  }
+
+  i::after {
+    left: auto;
+    right: .15rem;
+  }
+}
+
+body.rtl {
+  direction: rtl;
+}
+
+
+/* Pulsate Effect for Google Map Marker */
+@keyframes pulsate {
+  0%{
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  20%{
+    opacity: 0.8;
+  }
+  100%{
+    -webkit-transform: scale(5.5);
+    transform: scale(5.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pulsatePlay {
+  0%{
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  20%{
+    opacity: 0.4;
+  }
+  100%{
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+/* Map Marker */
+.map-marker{
+  @extend %bg-primary, %pos-absolute;
+  @include size(1.125rem);
+  border-radius: 50em;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    @include size(100%);
+    @include position(absolute, 0 null null 0);
+    border-radius: 50em;
+    opacity: 1;
+    @extend %bg-primary;
+  }
+
+  &::before {
+    animation: pulsate 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite forwards;
+  }
+
+  &::after {
+    animation: pulsate 1.5s 0.45s cubic-bezier(0, 0, 0.2, 1) infinite forwards;
+  }
+}
+
+
+/* Play Icon for Videos */
+.uni-play-icon {
+  @extend .map-marker, %absolute-center, %bg-tertiary;
+  @include size(5rem);
+
+  &::before {
+    @extend %bg-tertiary;
+    animation: pulsatePlay 1.5s 0.45s cubic-bezier(0, 0, 0.2, 1) infinite forwards;
+  }
+
+  &::after {
+    display: none;
+  }
+
+  i {
+    @include size(0);
+    @extend %absolute-center;
+    display: inline-block;
+    border-top: .5rem solid transparent;
+	  border-left: 1rem solid #fff;
+	  border-bottom: .5rem solid transparent;
+  }
+}
+
+/* Circle */
+.shape-circle {
+  display: inline-block;
+  @include size(1em);
+  @extend %bg-primary;
+  border-radius: 100%;
+  text-align: middle;
+}
+
+/* Fancy Heading */
+.fancy-heading {
+  @extend %color-dark, .h1;
+}
+
+.widget-body.container-fluid {
+  > .no-gutters {
+    @include margin(null -1*$grid-gutter-width/2);
+  }
+}

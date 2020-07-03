@@ -1,0 +1,72 @@
+// main: ../style.scss
+/********************************
+*********************************
+Timetable
+*********************************
+*********************************/
+.timetable {
+	background: #fff;
+	box-shadow: 0 5px 20px 0 rgba(0,0,0,.07);
+	thead {
+		@extend %bg-tertiary, .bg-gradient-1;
+		color: white;
+		text-transform: uppercase;
+		border: 0;
+		th {
+			border: 0;
+			font-weight: 500;
+			letter-spacing: .05em;
+			padding: 1em;
+		}
+	}
+	td {
+		padding: 1.5em;
+		div {
+			@extend %transition-base;
+			transform: scale(.9);
+			opacity: 0;
+			overflow: hidden;
+		}
+		div:not(.invisible) {
+			transform: scale(1);
+			opacity: 1;
+		}
+
+		@for $i from 1 through 20 {
+			&:nth-child(#{$i}) div { transition-delay: #{.03*$i}s }
+		}
+	}
+	.title {
+		@extend %font-family-base;
+		letter-spacing: 0;
+		margin-bottom: 0;
+		font-weight: 500;
+		line-height: 1.4;
+	}
+	.subtitle {
+		@extend %font-family-serif;
+		display: inline-block;
+		line-height: 1;
+		font-style: italic;
+	}
+	.time {
+		@extend %color-tertiary, %border-color-tertiary;		
+		font-size: rem(14);
+		display: block;
+		@include size(3.5em);
+		line-height: calc(3.5em - 4px);
+		border-radius: 100%;
+		border-width: 2px;
+		border-style: solid;
+		margin: 0 auto;
+		font-weight: 500;
+		@include margin(null 2em);
+		text-align: center;
+	}
+}
+
+.schedule-selector {
+	font-weight: 400;
+	font-size: rem(13);
+	@include padding(null 1em);
+}

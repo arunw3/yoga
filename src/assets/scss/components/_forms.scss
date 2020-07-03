@@ -1,0 +1,331 @@
+// main: ../style.scss
+/********************************
+*********************************
+Forms
+*********************************
+*********************************/
+.form-group {
+  body.rtl & {
+    text-align: right;
+  }
+}
+
+.form-control:disabled {
+  cursor: not-allowed;
+}
+
+.form-control {
+  @include placeholder {
+    opacity: .3;
+  }
+}
+
+.form-check {
+  body.rtl & {
+    padding-left: 0;
+    padding-right: 1.25rem;
+  }
+}
+
+.form-check-input {
+  margin-top: .5rem;
+  body.rtl & {
+    margin-left: 0;
+    margin-right: -1.25rem;
+  }
+}
+
+.input-group {
+  .btn {
+    @include padding(0 null);
+  }
+}
+
+
+
+/*
+ * =======================================
+ * Rounded Form Inputs
+ * =======================================
+ */
+.form-control-rounded {
+  border-radius: 500px;
+}
+
+.form-input-icon {
+  position: relative;
+
+  i {
+    @include position(absolute, 0 null null 2.625rem);
+    font-size: 1rem;
+    @extend %color-border-theme-color;
+    line-height: $input-height;
+  }
+
+  .form-control {
+    padding-left: 4.5rem;
+  }
+}
+
+.newsletter-minimal {
+  position: relative;
+
+  input[type="submit"] {
+    @include padding(0 null);
+    @include position(absolute, 3px 3px 3px null);
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  input[type="email"] {
+    padding-right: 200px;
+    box-shadow: $input-focus-box-shadow;
+  }
+}
+
+
+
+/*
+ * =======================================
+ * Icon Label
+ * =======================================
+ */
+.form-icon-label {
+  $transformValue: 20px;
+
+  .form-icon {
+    @include position(absolute, 50% null null $input-padding-x);
+    transform: translateY(-50%) translateX(-$transformValue);
+    opacity: 0;
+    font-size: rem(18);
+    transition: all .2s linear;
+    pointer-events: none;
+    @extend %content-color;
+  }
+
+  .form-control {
+    @include padding(null $input-padding-x null $input-padding-x * 2);
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  select.form-control {
+    @include padding(null $input-padding-x null);
+  }
+
+  .form-group {
+    position: relative;
+
+    label {
+      @include position(absolute, 50% null null $input-padding-x);
+      transform: translateY(-50%);
+      transition: all .2s linear;
+      pointer-events: none;
+      margin-bottom: 0;
+      color: rgba($body-color, .5);
+    }
+
+    textarea ~ label {
+      top: $input-padding-y;
+      transform: translateY(0);
+    }
+
+    textarea ~ .form-icon {
+      top: $input-padding-y;
+      line-height: $input-line-height;
+      transform: translateY(0) translateX(-$transformValue);
+    }
+  
+    &.input-has-value,
+    &.input-focused {
+      label {
+        transform: translateY(-50%) translateX($transformValue);
+        opacity: 0;
+      }
+
+      .form-icon {
+        opacity: .5;
+        transform: translateY(-50%) translateX(0);
+      }
+
+      textarea ~ label {
+        transform: translateY(0) translateX(50%);
+      }
+
+      textarea ~ .form-icon {
+        transform: translateY(0) translateX(0);
+      }
+    }
+  }
+
+  body.rtl & {
+    .form-group {
+      label {
+        @include position(absolute, 50% $input-padding-x null auto);
+      }
+
+      textarea ~ label {
+        top: $input-padding-y;
+        transform: translateY(0);
+      }
+
+      textarea ~ .form-icon {
+        top: $input-padding-y;
+        line-height: $input-line-height;
+        transform: translateY(0) translateX($transformValue);
+      }
+
+      &.input-focused,
+      &.input-has-value {
+        label {
+          transform: translateY(-50%) translateX(-$transformValue);
+          opacity: 0;
+        }
+
+         textarea ~ label {
+          transform: translateY(0) translateX(-$transformValue);
+        }
+
+        textarea ~ .form-icon {
+          transform: translateY(0) translateX(0);
+        }
+      }
+    }
+
+    .form-control {
+      @include padding(null $input-padding-x * 2 null $input-padding-x);
+    }
+
+    select.form-control {
+      padding-right: $input-padding-x;
+    }
+
+    .form-icon {
+      @include position(absolute, 50% $input-padding-x null auto);
+      transform: translateY(-50%) translateX($transformValue);
+    }
+  }
+}
+
+
+
+/*
+ * =======================================
+ * Material
+ * =======================================
+ */
+.form-material {
+  .form-group {
+    position: relative;
+    label {
+      @include position(absolute, 50% null null 0);
+      transform: translateY(calc(-50% - 2px));
+      pointer-events: none;
+      transition: all 0.3s ease;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+
+    textarea + label {
+      top: $input-padding-y;
+      line-height: 2;
+      transform: translateY(-2px);
+      padding-bottom: 0;
+    }
+
+    &.input-has-value,
+    &.input-focused {
+      label {
+        top: 0;
+        transform: translateY(-100%);
+        font-size: rem(10);
+        line-height: 1;
+      }
+
+      .form-control {
+        @include placeholder {
+          opacity: 1;
+        }
+      }
+    }
+
+    select.form-control ~ label {
+      top: 0;
+      transform: translateY(-100%);
+      font-size: rem(10);
+      line-height: 1;
+    }
+
+    &.input-focused {
+      .form-control {
+        background-size: 100% 2px, 0 1px;
+        outline: 0 none;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  .form-control {
+    @include padding(.5em 0 null);
+    border: 0;
+    margin-bottom: em(30);
+    transform-origin: bottom right;
+    background-color: rgba(0, 0, 0, 0);
+    background-position: center bottom, center calc(99%);
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    transition: background .3s ease-out 0s;
+    @extend .bg-gradient-4;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    @include placeholder {
+      opacity: 0;
+    }
+  }
+
+  .form-control:not(textarea) {
+    line-height: 1.75;
+    height: 3em;
+  }
+
+  body.rtl & {
+    .form-group label {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+
+
+/*
+ * =======================================
+ * Custom Control
+ * =======================================
+ */
+.custom-control-label {
+  &::before {
+    background: none;
+    border: 2px solid $custom-control-indicator-bg;
+  }
+}
+
+.custom-control {
+  &.custom-control-circle {
+    .custom-control-label {
+      &::after,
+      &::before {
+        border-radius: 100%;
+      }
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    border-color: transparent;
+  }
+}

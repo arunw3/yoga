@@ -1,0 +1,172 @@
+// main: ../style.scss
+/********************************
+*********************************
+Quotes
+*********************************
+*********************************/
+blockquote {
+  @extend %content-color, %quotes-font-family;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 2.25rem;
+  margin-bottom: 2rem;
+
+  cite {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: .375rem 0 0;
+    line-height: 1.5;
+    @extend %headings-font-family, %headings-color;
+    display: block;
+    font-style: normal;
+    margin-top: 1rem;
+  }
+}
+
+.quotes-carousel-container,
+.quotes-carousel-thumbs-container {
+  max-width: 45rem;
+  margin: 0 auto;
+  cursor: all-scroll;
+}
+
+.quotes-carousel-thumbs-container {
+  position: relative;
+
+  .slick-track {
+    padding-top: 20px;
+  }
+
+  .slick-slider-controls {
+    @include position(absolute, 0 null null null);
+    z-index: 9;
+    width: 100%;
+  }
+
+  .slick-slider-left,
+  .slick-slider-right {
+    @extend %color-border-theme-color;
+    @include position(absolute, 30px null null 0);
+    transition-property: color;
+    @extend %transition-effect;
+
+    &:focus,
+    &:hover {
+      @extend %color-secondary;
+    }
+  }
+
+  .slick-slider-right {
+    left: auto;
+    right: 0;
+  }
+
+  i {
+    font-size: 2.25rem;
+  }
+}
+
+.quotes {
+  blockquote {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  img {
+    border-radius: 4rem;
+    @include size(4rem);
+    margin-right: 20px;
+  }
+
+  p {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: .375rem 0 0;
+    line-height: 1.5;
+    @extend %headings-color;
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    margin-bottom: 3em;
+  }
+}
+
+.quotes-carousel {
+  blockquote {
+    border-left: 0;
+    padding-left: 0;
+    text-align: center;
+    @extend %h5-font-size;
+    line-height: 2.625rem;
+  }
+}
+
+.quotes-carousel-thumbs {
+  padding: 0 4rem;
+  position: relative;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  font-weight: 600;
+
+  figure {
+    @include size(5rem);
+    @include margin(null auto rem(30) auto);
+  }
+
+  img {
+    height: 3.75rem;
+    width: 3.75rem !important;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    display: inline-block !important;
+    @extend %transition-base;
+  }
+
+  p {
+    @extend %headings-color;
+    margin-bottom: 0;
+  }
+
+  .owl-stage {
+    padding-top: rem(20);
+  }
+
+  .slider-item {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 3rem;
+    position: relative;
+
+    div {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateX(-50%) translateY(25px);
+      transition-property: opacity, transform, visibility;
+      @extend %transition-effect;
+
+      @include position(absolute, null null 0 50%);
+      width: 200px;
+    }
+  }
+
+  small {
+    @extend .small-title;
+    opacity: .5;
+    letter-spacing: .2em;
+  }
+
+  .slick-center {
+    img {
+      height: 5rem;
+      width: 5rem !important;
+      margin-top: -10px;
+    }
+
+    &.slider-item div {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}

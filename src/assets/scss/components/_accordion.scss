@@ -1,0 +1,213 @@
+// main: ../style.scss
+/********************************
+*********************************
+Accordions
+*********************************
+*********************************/
+.accordion {
+  .card-header {
+    padding: 0;
+    border-color: transparent;
+    .btn {
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  h5 {
+    @extend %font-family-base, %h5-font-size;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  button {
+    width: 100%;
+    @include padding(null 1em);
+    white-space: normal;
+    text-align: inherit;
+
+    &:before {
+      font-family: "Feather";
+      content: "\e9b1";
+      margin-right: .5em;
+      line-height: 1;
+    }
+
+    &[aria-expanded="true"] {
+      &:before {
+        content: "\e996";
+      }
+    }
+  }
+}
+
+
+/* Accordion Shadow
+========================*/
+.accordion-shadow,
+.accordion-border,
+.accordion-default {
+  .card {
+    border-color: transparent;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 2px 1px rgba(0,0,0,.03);
+  }
+
+  .card-header {
+    background: #fff;
+  }
+
+  h5 button {
+    @extend %headings-color;
+    position: relative;
+    font-size: 1rem;
+    text-align: left;
+    border: 0;
+    z-index: 0;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      display: block;
+      @include position(absolute, 0);
+      @extend .bg-gradient-2;
+      opacity: 0;
+      transition: inherit;
+      z-index: -1;
+    }
+
+    &[aria-expanded="true"] {
+      color: #fff;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+/* Accordion Border
+========================*/
+.accordion-border {
+  .card {
+    @extend %border-color-theme;
+    box-shadow: none;
+  }
+
+  .card:not(:first-of-type):not(:last-of-type),
+  .card:first-of-type {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    @extend %border-bottom-color-theme;
+  }
+}
+
+
+/* Accordion default
+========================*/
+.accordion-default {
+  .card {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .card-header {
+    background: transparent;
+  }
+
+  h5 button {
+    align-items: center;
+
+    &::before {
+      text-align: center;
+      color: #fff;
+      @extend %bg-primary;
+      @include size(1.5em);
+      line-height: 1.5em;
+      border-radius: 3px;
+      margin-right: 1em;
+    }
+
+    &[aria-expanded="true"] {
+      border-radius: 5px;
+
+      &::before {
+        background: #fff;
+        @extend %color-primary;
+      }
+    }
+  }
+}
+
+
+
+/* Accordion Minimal
+========================*/
+.accordion-minimal {
+
+  .card {
+    padding: rem(30) 0;
+    &,
+    &:first-of-type,
+    &:not(:first-of-type):not(:last-of-type) {
+      border-width: 0;
+      background: none;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      @extend %border-bottom-color-theme;
+    }
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+
+  .card-body {
+    padding: rem(20) 0 rem(20);
+  }
+
+  .card-header {
+    background: none;
+
+    button {
+      padding: 0;
+      position: relative;
+      font-size: rem(22);
+      line-height: rem(30);
+      @include padding(rem(10) rem(50) rem(10) null);
+      @extend %content-color;
+
+      i {
+        font-size: rem(24);
+        @include position(absolute, 0 null null rem(-50));
+        line-height: inherit;
+        @include size(rem(30));
+        color: $text-muted;
+      }
+
+      &:before {
+        display: none;
+      }
+
+      &::after {
+        @include position(absolute, 50% 0 null null);
+        font-size: rem(24);
+        font-family: 'Feather';
+        content: '\e9b2';
+        @extend %color-tertiary;
+        transform: translateY(-50%);
+      }
+
+      &[aria-expanded="true"] {
+        @extend %headings-color;
+        &:after {
+          content: '\e997';
+        }
+      }
+    }
+  }
+}

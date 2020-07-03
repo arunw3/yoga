@@ -1,0 +1,50 @@
+// main: ../style.scss
+/********************************
+*********************************
+Events
+*********************************
+*********************************/
+.event-item {
+  @extend .media;
+
+  &:not(:last-child) {
+    margin-bottom: 2em;
+  }
+
+  .date-container {
+    border: 1px dashed rgba($theme-border-color, .3);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    line-height: 1;
+    padding: .7em .5em .5em;
+    margin-right: 1.5em;
+
+    .date {
+      @extend %headings-font-family, %h1-font-size;
+    }
+
+    .month {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .2em;
+      @extend %small-font-size;
+      opacity: .7;
+    }
+  }
+
+  .event-body {
+    @extend .media-body;
+    h6 {
+      @extend %font-family-base;
+      letter-spacing: 0;
+      margin-bottom: .7em;
+    }
+    p {
+      @extend %font-family-serif;
+      font-size: .8em;
+      font-style: italic;
+      span { display: block; }
+    }
+  }
+}

@@ -1,0 +1,291 @@
+// main: ../style.scss
+/********************************
+*********************************
+Buttons
+*********************************
+*********************************/
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  @extend %transition-base;
+
+  i{
+    font-size: rem(18);
+    @include margin(null em(5));
+  }
+
+  &:hover {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.05);
+    transform: translate3d(0,-2px,10px);
+  }
+}
+
+// Disable Shadows
+@if $enable-shadows == false {  
+  .btn {
+    &:focus, .focus {
+      box-shadow: none;    
+    }
+  }  
+}
+
+
+.btn-sm {
+  i { font-size: rem(16) }
+}
+
+.btn-default {
+  @extend %bg-border-theme-color, %headings-color;
+}
+
+.btn-tertiary {
+  color: white;
+}
+
+.btn-rounded {
+  border-radius: 2em;
+}
+
+.btn-circle {
+  @extend %radius-full;
+  padding: 0;
+  @include size(3em);
+  line-height: 3em;
+  justify-content: center;
+  align-items: center;
+
+  i { font-size: inherit; line-height: 1; margin: 0; }
+
+  &.btn-lg {
+    @include size(3em);
+    line-height: 3em;
+  }
+
+  &.btn-sm {
+    @include size(2em);
+    line-height: 2em;
+    padding: 0;
+  }
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Fancy Button Style with a Gradient of Primary Color */
+.btn-primary-gradient {
+  border: 0;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    @include position(absolute, 0);
+    content: "";
+    transition-property: opacity;
+    @extend %transition-effect;
+    pointer-events: none;
+    background: linear-gradient(45deg, rgba(255,255,255,.3), rgba(255,255,255,0));
+  }
+
+  &:hover::after {
+    opacity: .7;
+  }
+}
+
+/* Fancy Button */
+@keyframes btnFancyAnim {
+  50% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  51% {
+    transform: scale(0.5);
+    background: none;
+  }
+  100% {
+    transform: scale(1);
+    background: #fff;
+    color: $primary;
+    border-radius: 100%;
+    opacity: 1;
+  }
+}
+
+/* Btn Fancy */
+%btn-primary-secondary-gradient {
+  @extend %bg-primary;
+  @extend .bg-gradient-3;
+  &::before {
+    content: '';
+    display: block;
+    @include position(absolute, -2px);
+    overflow: hidden;
+    transform: rotate(180deg);
+    background: inherit;
+    z-index: -1;
+    transition: inherit;
+    opacity: 0;
+  }
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.btn-fancy {
+  @extend %btn-primary-secondary-gradient;
+  @extend .small-title;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  z-index: 1;
+  letter-spacing: 2px;
+  i {
+    transform: none;
+    display: inline-block;
+    @include size(1.4em);
+    line-height: 1.4em;
+  }
+  &:hover {
+    color: #fff;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.2);
+    i {
+      animation: btnFancyAnim .8s ease;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+/* Call To Action Button */
+.btn-cta {
+  @extend %btn-primary-secondary-gradient, %h3-font-size;
+  color: #fff;
+  @include padding(rem(40) null);
+  white-space: normal;
+  font-weight: 500;
+  border-radius: 0;
+  border: 0;
+  &:hover {
+    color: #fff;
+    transform: none;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+/* Buttons Outline */
+.btn-outline-default{
+  background: transparent;
+  border-width: 1px;
+  border-style: solid;
+  @extend %border-color-theme;
+}
+
+/* Line Under Button */
+.btn-line-under {
+  @include padding(null 0);
+  @extend .small-title;
+  @extend %headings-color;
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    @include position(absolute, null null 0 0);
+    width: 30px;
+    @extend %bg-primary;
+    display: block;
+    height: 3px;
+    transition: all .8s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  &::before {
+    opacity: 0.2;
+  }
+  &:hover {
+    @extend %headings-color;
+    &::after {
+      transition-delay: .2s;
+    }
+    &::before,
+    &::after {
+      width: 100%;
+      @extend %bg-secondary;
+    }
+  }
+}
+
+@keyframes scrollDownBtnIconContAnim {
+  20% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  80% { transform: scale(1); }
+}
+
+/* Scroll down btn */
+.scroll-down-btn {
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.05);
+  border-radius: 0;
+  font-size: em(14, 15);
+  letter-spacing: 0.05em;
+  z-index: 2;
+  @extend %headings-color;
+  @extend %transition-base;
+  @include padding(1.7em 3.5em);
+
+  .icon-container {
+    position: relative;
+    @include size(2em);
+    line-height: calc(2em - 2px);
+    text-align: center;
+    display: inline-block;
+    border-width: 2px;
+    border-style: solid;
+    @extend %border-color-tertiary;
+    border-radius: 100%;
+    transition: inherit;
+    animation-name: scrollDownBtnIconContAnim;
+    animation-duration: 4s;
+    animation-timing-function: $transition-timing-function;
+    animation-iteration-count: infinite;
+
+    &::before {
+      content: '';
+      display: block;
+      @include position(absolute, -10px);
+      border-radius: inherit;
+      border-width: 2px;
+      border-style: solid;
+      @extend %border-color-tertiary;
+      opacity: 0;
+      transition: inherit;
+    }
+  }
+
+  i {
+    font-size: rem(14);
+    transition: inherit;
+    transition-delay: 0;
+    margin: 0;
+  }
+
+  &:focus,
+  &:hover {
+    .icon-container {
+      @extend %bg-tertiary;
+      color: #fff;
+      animation: none;
+      &::before {
+        @include position(absolute, -7px);
+        opacity: 1;
+        @extend %border-color-tertiary;
+      }
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+  }
+}

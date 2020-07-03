@@ -1,0 +1,67 @@
+// main: ../style.scss
+/********************************
+*********************************
+Countdown
+*********************************
+*********************************/
+.countdown {
+	.countdown-completed-content,
+	.countdown-content {
+		display: none;	
+	}
+
+	&[data-status="active"] {
+		.countdown-content {
+			display: block;
+		}
+	}
+
+	&[data-status="elapsed"] {
+		.countdown-content {
+			display: block;
+		}
+	}
+
+	&[data-status="finished"] {
+		.countdown-completed-content {
+			display: block;
+		}
+	}
+}
+
+.countdown-minimal {
+	background: #fff;
+	display: flex;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+
+	.countdown-content span {
+		display: inline-flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		padding: 30px;
+		line-height: 1.1;
+		font-weight: 400;
+		text-transform: uppercase;
+		@extend %headings-color;
+		letter-spacing: .1em;
+		strong {
+			@extend %color-secondary, %h1-font-size;
+		}
+		&:not(:last-child) {
+			border-right-width: 1px;
+			border-right-style: solid;
+			@extend %border-right-color-theme;
+		}
+	}
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+	.countdown-minimal .countdown-content span {
+		display: flex;
+		&:not(:last-child) {
+			border-right: 0;
+			border-bottom: 1px solid $theme-border-color;
+		}
+	}
+}

@@ -1,0 +1,74 @@
+// main: ../style.scss
+/********************************
+*********************************
+Social Icons
+*********************************
+*********************************/
+%social-list-inline {
+  @extend .list-unstyled, .list-inline;
+  li { @extend .list-inline-item; }
+}
+
+.social-list {
+  @extend %social-list-inline; }
+
+.social-list-colored-circle {
+  $marginValue: 1.5rem;
+  @extend %social-list-inline;
+  li {
+    display: inline-block;
+    margin-left: $marginValue;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  a {
+    @include size(3.125rem);
+    text-align: center;
+    display: inline-block;
+    @extend %bg-primary;
+    color: #fff !important;
+    border-radius: 3.125rem;
+  }
+
+  i {
+    line-height: 3.125rem;
+    font-size: 1.125rem;
+  }
+
+  body.rtl & {
+    li {
+      &:first-child { margin-left: $marginValue; }
+      &:last-child { margin-left: 0; }
+    }
+  }
+}
+
+.social-list-hover-tertiary {
+  @extend %social-list-inline;
+  font-size: rem(18);
+  li:not(:last-child) {
+    margin-right: .5em;
+  }
+  a {
+    @extend %headings-color;
+    @extend %transition-base;
+    &:hover { @extend %color-tertiary; }
+  }
+  i { font-size: 1em }
+}
+
+.social-list-bordered {
+  a {
+    display: inline-block;
+    @extend %headings-color;
+    border-width: 1px;
+    border-style: solid;
+    @extend %border-color-theme;
+    @include size(2em);
+    line-height: calc(2em - 1px);
+    text-align: center;
+    border-radius: 100%;
+  }
+}

@@ -1,0 +1,290 @@
+@font-face {
+    font-family: 'Vibes';
+    src: url('fonts/Vibes.eot?d3a7um');
+    src: url('fonts/Vibes.eot?d3a7um#iefix') format('embedded-opentype'), url('fonts/Vibes.ttf?d3a7um') format('truetype'), url('fonts/Vibes.woff?d3a7um') format('woff'), url('fonts/Vibes.svg?d3a7um#Vibes') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="vibes-"],
+[class*=" vibes-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Vibes' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.vibes-relax:before {
+    content: "\f110";
+}
+
+.vibes-lotus-1:before {
+    content: "\f117";
+}
+
+.vibes-bed:before {
+    content: "\f10a";
+}
+
+.vibes-essential-oil:before {
+    content: "\f116";
+}
+
+.vibes-essential-oil-7:before {
+    content: "\f100";
+}
+
+.vibes-candle:before {
+    content: "\f112";
+}
+
+.vibes-incense:before {
+    content: "\f10f";
+}
+
+.vibes-candle-1:before {
+    content: "\f102";
+}
+
+.vibes-essential-oil-6:before {
+    content: "\f101";
+}
+
+.vibes-essential-oil-4:before {
+    content: "\f104";
+}
+
+.vibes-bathtub:before {
+    content: "\f10e";
+}
+
+.vibes-stones-2:before {
+    content: "\f118";
+}
+
+.vibes-bathtub-2:before {
+    content: "\f10c";
+}
+
+.vibes-stones-1:before {
+    content: "\f119";
+}
+
+.vibes-bamboo:before {
+    content: "\f106";
+}
+
+.vibes-lotus-2:before {
+    content: "\f114";
+}
+
+.vibes-essential-oil-2:before {
+    content: "\f111";
+}
+
+.vibes-towel:before {
+    content: "\f10b";
+}
+
+.vibes-essential-oil-3:before {
+    content: "\f105";
+}
+
+.vibes-essential-oil-1:before {
+    content: "\f113";
+}
+
+.vibes-flower:before {
+    content: "\f108";
+}
+
+.vibes-stones:before {
+    content: "\f11a";
+}
+
+.vibes-candles:before {
+    content: "\f11d";
+}
+
+.vibes-spa:before {
+    content: "\f11b";
+}
+
+.vibes-lotus:before {
+    content: "\f11c";
+}
+
+.vibes-scent:before {
+    content: "\f107";
+}
+
+.vibes-soap:before {
+    content: "\f115";
+}
+
+.vibes-essential-oil-5:before {
+    content: "\f103";
+}
+
+.vibes-hot-stones:before {
+    content: "\f109";
+}
+
+.vibes-bathtub-1:before {
+    content: "\f10d";
+}
+
+.vibes-vibes:before {
+    content: "\e900";
+}
+
+.vibes-weight:before {
+    content: "\f11e";
+}
+
+.vibes-fitness:before {
+    content: "\f11f";
+}
+
+.vibes-heart:before {
+    content: "\f120";
+}
+
+.vibes-swimmer:before {
+    content: "\f121";
+}
+
+.vibes-bread:before {
+    content: "\f122";
+}
+
+.vibes-strong:before {
+    content: "\f123";
+}
+
+.vibes-protein:before {
+    content: "\f124";
+}
+
+.vibes-fruit:before {
+    content: "\f125";
+}
+
+.vibes-olive-oil:before {
+    content: "\f126";
+}
+
+.vibes-apple:before {
+    content: "\f127";
+}
+
+.vibes-fitness-watch:before {
+    content: "\f128";
+}
+
+.vibes-shoes:before {
+    content: "\f129";
+}
+
+.vibes-branch:before {
+    content: "\f12a";
+}
+
+.vibes-healthy:before {
+    content: "\f12b";
+}
+
+.vibes-kettlebell:before {
+    content: "\f12c";
+}
+
+.vibes-nutrition:before {
+    content: "\f12d";
+}
+
+.vibes-milk:before {
+    content: "\f12e";
+}
+
+.vibes-dumbbell:before {
+    content: "\f12f";
+}
+
+.vibes-avocado:before {
+    content: "\f130";
+}
+
+.vibes-exercise:before {
+    content: "\f131";
+}
+
+.vibes-diet:before {
+    content: "\f132";
+}
+
+.vibes-running:before {
+    content: "\f133";
+}
+
+.vibes-yoga-1:before {
+    content: "\f134";
+}
+
+.vibes-gym:before {
+    content: "\f135";
+}
+
+.vibes-water:before {
+    content: "\f136";
+}
+
+.vibes-nuts:before {
+    content: "\f137";
+}
+
+.vibes-workout:before {
+    content: "\f138";
+}
+
+.vibes-yoga:before {
+    content: "\f139";
+}
+
+.vibes-jump-rope:before {
+    content: "\f13a";
+}
+
+.vibes-junk-food:before {
+    content: "\f13b";
+}
+
+.vibes-orange-juice:before {
+    content: "\f13c";
+}
+
+.vibes-beans:before {
+    content: "\f13d";
+}
+
+.vibes-orange-juice-1:before {
+    content: "\f13e";
+}
+
+.vibes-schedule:before {
+    content: "\f13f";
+}
+
+.vibes-sleep:before {
+    content: "\f140";
+}
+
+.vibes-bicycle:before {
+    content: "\f141";
+}

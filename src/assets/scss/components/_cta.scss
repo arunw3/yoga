@@ -1,0 +1,58 @@
+// main: ../style.scss
+/********************************
+*********************************
+CALL TO ACTION
+*********************************
+*********************************/
+.element-cta {
+
+}
+
+/* Accordion Shadow
+========================*/
+.element-cta-1 {
+  position: relative;
+  @include padding(80px 0 70px);
+  text-align: center;
+  @extend %bg-dark-hover;
+
+  h4 {
+    font-size: 4.5rem;
+    line-height: 1;
+    letter-spacing: -.05em;
+    font-weight: 700;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    @include position(absolute, null null -1.5rem 50%);
+    transform: translateX(-50%);
+  }
+
+  small {
+    position: relative;
+
+    &::before,
+    &::after {
+      @include position(absolute, 50% null null -3.5rem);
+      transform: translateY(-50%);
+      content: "";
+      height: 1px;
+      width: 3rem;
+      @extend %bg-text-muted;
+    }
+
+    &::after {
+      left: auto;
+      right: -3.5rem
+    }
+  }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+  .element-cta-1 {
+    h4 {
+      font-size: $h3-font-size;
+    }
+  }
+}

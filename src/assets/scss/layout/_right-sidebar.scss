@@ -1,0 +1,145 @@
+// main: ../style.scss
+/********************************
+ *********************************
+ RIGHT SIDEBAR
+ *********************************
+ *********************************/
+@keyframes submenuHeightAnim {
+	0% { height: 0; }
+	100% { height: auto; }
+}
+
+.right-sidebar {
+	$animationFunc: cubic-bezier(0.77, 0, 0.175, 1);
+	@include position(fixed, 0);
+	margin: 0;
+	transition: all .8s $animationFunc;
+	@extend %content-color;
+
+	&.sidebar {
+		margin-bottom: 0;
+	}
+
+	.right-sidebar-body {
+		@include position(fixed, 0 0 0 null);
+		height: 100vh;
+		background: #fff;
+		width: 100%;
+		max-width: $sidebar-width;
+		@extend .animated;
+		animation-duration: .8s;
+		animation-timing-function: $animationFunc;
+		padding: rem(15) rem(40);
+		overflow-y: auto;
+		overflow-x: hidden;
+		box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
+
+		> * {
+			// margin-bottom: em(50);
+		}
+	}
+
+	.widget {
+		margin-top: em(10);
+	}
+
+	&[data-template-open='true'] {
+		visibility: visible;
+		background: rgba(0,0,0,.6);
+		
+		.right-sidebar-body {
+			@extend .fadeInRight;
+		}
+	}
+
+	&[data-template-open="false"] {
+		visibility: hidden;
+
+		.right-sidebar-body {
+			@extend .fadeOutRight;
+		}
+	}
+
+	.close {
+		@extend %bg-secondary, .bg-gradient-2, %transition-base;
+		color: #fff;
+		text-shadow: none;
+		opacity: 1;
+		@include size(rem(80));
+		@include position(relative, rem(-15) rem(-43) null null);
+		display: block;
+
+		i { transition: inherit; }
+
+		&:not(:disabled):not(.disabled):focus,
+		&:not(:disabled):not(.disabled):hover {
+			opacity: 1;
+			color: #fff;
+		}
+	}
+
+	.menu {
+		padding-left: 0;
+		list-style: none;
+		margin-bottom: em(50);
+		@include margin(null em(-15));
+		
+		> .menu-item {
+			@include padding(null 0);
+		}
+
+		.menu-item.open .sub-menu {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.sub-menu {
+			position: relative;
+			transform: none;
+			top: auto;
+			left: auto;
+		}
+
+		.menu-item > a {
+			@extend %headings-color;
+			font-size: em(15,14);
+			letter-spacing: .05em;
+		}
+
+		a {
+			font-weight: 300;
+			&:focus { outline: none }
+		}
+
+		ul {
+			list-style: none;
+			padding-left: 1em;
+		}
+
+		.sub-menu {
+			margin: 1em 0;
+			background: none;
+			box-shadow: none;
+			border: 0;
+		}
+
+		.menu-item-has-children {
+			> a::after {
+				content: '-';
+				margin-left: 1em;
+			}
+
+			&:not(.open) {
+				> a::after { content: '+' }
+
+				> .sub-menu {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.text-widget {
+		line-height: 1.7;
+	}
+}

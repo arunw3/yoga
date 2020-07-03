@@ -1,0 +1,97 @@
+// main: ../style.scss
+/********************************
+*********************************
+Clients
+*********************************
+*********************************/
+.element-client {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+
+  a {
+    display: block;
+  }
+
+  img {
+    -webkit-filter: none;
+    filter: none;
+    transition: filter $transition-effect;
+    -webkit-transition: filter $transition-effect, -webkit-filter $transition-effect;
+  }
+
+  &:hover img {
+    -webkit-filter: grayscale(100%) brightness(135%) contrast(120%);
+    filter: grayscale(100%) brightness(135%) contrast(120%);
+  }
+}
+
+
+/* Monotone
+========================*/
+.element-client-monotone {
+  img {
+    -webkit-filter: grayscale(100%) brightness(135%) contrast(120%);
+    filter: grayscale(100%) brightness(135%) contrast(120%);
+    transition: filter $transition-effect;
+    -webkit-transition: filter $transition-effect, -webkit-filter $transition-effect;
+  }
+
+  &:hover img {
+    -webkit-filter: none;
+    filter: none;
+  }
+}
+
+
+/* Border
+========================*/
+.element-client-border {
+  border-width: 1px;
+  border-style: solid;
+  @extend %border-color-theme;
+  border-radius: 3px;
+  transform: translateY(0);
+  transition-property: border-color, transform, box-shadow;
+  @extend %transition-effect;
+
+  img{
+    background: transparent;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
+
+    img {
+      -webkit-filter: none;
+      filter: none;
+    }
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    margin-bottom: 2em;
+  }
+}
+
+
+/* Grid
+========================*/
+.element-client-grid {
+  border-left-width: 1px;
+  border-left-style: solid;
+  @extend %border-color-theme;
+
+  .row > [class*="col-"]:first-child > & {
+    border-left: 0;
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    border: 1px solid $theme-border-color;
+    border-bottom: 0;
+
+    .row > [class*="col-"]:first-child > & {
+      border-left: 1px solid $theme-border-color;
+    }
+  }
+}

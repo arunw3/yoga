@@ -1,0 +1,144 @@
+// main: ../style.scss
+/********************************
+*********************************
+Team
+*********************************
+*********************************/
+.team {
+
+}
+
+/* Hover Fancy
+========================*/
+.team-hover-fancy {
+	position: relative;
+	@extend %transition-base;
+	.team-content {
+		@include position(absolute, 0);
+		opacity: 0;
+		visibility: hidden;
+		@extend %transition-base;
+		display: flex;
+		flex-flow: column;
+		padding: em(25);
+		z-index: 0;
+		&:after {
+			z-index: -1;
+			content: '';
+			display: block;
+			@include position(absolute, 0);
+			@extend .bg-gradient-3;
+			opacity: .9;
+		}
+	}
+
+	.team-name,
+	.team-title {
+		@extend %font-family-base, %transition-base;
+		letter-spacing: 0;
+		margin-bottom: .3em;
+		transform: translateY(rem(30));
+		opacity: 0;
+		&, a {
+			color: #fff;
+		}
+	}
+
+	.team-name {
+		text-transform: uppercase;
+		font-weight: 500;
+		letter-spacing: .1em;
+		font-size: rem(20);
+	}
+
+	.team-title {
+		font-size: rem(13);
+		font-weight: 400;
+	}
+
+	.team-name-side {
+		@include position(absolute, null null 0 0);
+		@extend %font-family-base, %transition-base;
+		font-size: rem(12);
+		letter-spacing: .2em;
+		font-weight: 600;
+		text-transform: uppercase;
+		background: #fff;
+		z-index: 3;
+		transform-origin: left;
+		transform: rotate(-90deg);
+		padding: 1em;
+		pointer-events: none;
+		visibility: visible;
+	}
+
+	.social-list {
+		flex: 1;
+		li {
+			@extend %transition-base;
+			transform: translateY(rem(20));
+			opacity: 0;
+			visibility: hidden;
+		}
+		a {			
+			color: #fff;
+			i { font-size: rem(18) }
+		}	
+	}
+
+	&:hover {
+		.team-name-side {
+			transform: rotate(-90deg) translateX(20px);
+			opacity: 0;
+			visibility: hidden;
+		}
+		.team-content {
+			opacity: 1;
+			visibility: visible;
+		}
+		.team-name,
+		.team-title {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		.team-title {
+			transition-delay: .05s;
+		}
+		.social-list li {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+			@for $i from 1 through 10 {
+				&:nth-child(#{$i}) { transition-delay: #{.04*$i}s }
+			}
+		}
+	}
+
+	@media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+		.team-name-side {
+			transform: rotate(-90deg) translateX(20px);
+			opacity: 0;
+			visibility: hidden;
+		}
+		.team-content {
+			opacity: 1;
+			visibility: visible;
+		}
+		.team-name,
+		.team-title {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		.team-title {
+			transition-delay: .05s;
+		}
+		.social-list li {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+			@for $i from 1 through 10 {
+				&:nth-child(#{$i}) { transition-delay: #{.04*$i}s }
+			}
+		}
+	}
+}

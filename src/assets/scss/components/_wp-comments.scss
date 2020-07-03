@@ -1,0 +1,253 @@
+// main: ../style.scss
+/********************************
+*********************************
+WP Comments
+*********************************
+*********************************/
+
+.comments-area {
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 1.5rem 0 4rem 0;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  @extend %border-color-theme;
+}
+
+.comments-title-link,
+#cancel-comment-reply-link {
+  @include position(absolute, 1.125rem 0 null null);
+  @extend %font-family-sans-serif, %color-tertiary;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8125rem;
+  line-height: 1.5rem;
+
+  i {
+    font-size: 1.125rem;
+    position: relative;
+    top: 2px;
+  }
+
+  a:hover,
+  &:hover {
+    @extend %headings-color;
+  }
+}
+
+ol.comment-list,
+ol.commentlist {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding-left: 0;
+
+  ul, ol {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 2.25rem;
+  }
+
+  li {
+    text-align: left;
+    position: relative;
+    padding-left: 5.5rem;
+    margin-top: 3.75rem;
+    &:first-child { margin-top: 0; }
+  }
+
+  img.avatar {
+    @include position(absolute, 1rem null null 0);
+    @include size(3.75rem);
+    border-radius: 3.75rem;
+  }
+
+  .children {
+    list-style: none;
+  }
+}
+
+ol.commentlist {
+  li {
+    border-top-width: 1px;
+    border-top-style: solid;
+    @extend %border-color-theme;
+    padding-top: rem(40px);
+    margin-top: rem(40px);
+
+    img.avatar {
+      top: 3rem;
+    }
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+
+      img.avatar { top: .5rem; }
+    }
+  }
+
+  li::before {
+    display: none;
+  }
+
+  .star-rating {
+    position: absolute;
+    right: 0;
+    margin-top: .5rem;
+  }
+
+  .meta {
+    margin-bottom: rem(10);
+  }
+
+  .woocommerce-review__author,
+  .woocommerce-review__dash {
+    margin-right: 10px;
+  }
+
+  .meta time {
+    margin-left: 0;
+  }
+}
+
+.comment-block {
+  background: #fff;
+  border: 1px solid $theme-border-color;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  padding: 1.875rem 2rem 1rem;
+
+  &::before, &::after {
+    content: "";
+    @include position(absolute, 2.25rem null null 4.875rem);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right-width: 10px;
+    border-right-style: solid;
+    @extend %border-color-theme;
+  }
+
+  &::after {
+    left: 4.9375rem;
+    border-right-color: #fff;
+  }
+}
+
+.comment-author,
+.commentlist .meta {
+  @extend %headings-color;
+
+  a {
+    @extend %headings-color;
+    &:hover { @extend %color-tertiary; }
+  }
+
+  b {
+    font-size: .9375rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  time {
+    letter-spacing: 0.08em;
+    @extend %font-size-sm;
+    text-transform: uppercase;
+    color: $text-muted;
+    margin-left: 2rem;
+
+    &::before {
+      font-family: 'Feather';
+      content: "\e939";
+      @extend %color-tertiary;
+      font-size: 1rem;
+      margin-right: 3px;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
+.comment-metadata {
+  position: relative;
+  width: 100%;
+}
+
+.comment-reply-link {
+  display: inline-block;
+  @include position(absolute, null null -2.125rem 0rem);
+  color: #fff;
+  letter-spacing: 0.08em;
+  @extend %font-size-sm, .bg-gradient-2, %transition-short;
+  font-weight: 600;
+  line-height: 2.25rem;
+  text-transform: uppercase;
+  padding: 0 1.5rem;
+  border-radius: 3px;
+  z-index: 0;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    @include position(absolute, 0);
+    background: inherit;
+    transform: rotate(180deg);
+    opacity: 0;
+    z-index: -1;
+    transition: inherit;
+  }
+
+  &:hover {
+    color: #fff;
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+.comment-reply-title {
+  position: relative;
+}
+
+.comment-notes {
+  font-size: .8125rem;
+  .required { @extend %color-danger; }
+}
+
+.comment-form {
+  label {
+    display: none;
+  }
+
+  input[type=text],
+  input[type=email],
+  textarea {
+    display: block;
+    width: 100%;
+    line-height: 3.125rem;
+    border-width: 1px;
+    border-style: solid;
+    @extend %border-color-theme;
+    outline: none;
+    padding: 0 1.5rem;
+    border-radius: 2px;
+    transition: border-color ease-in 200ms;
+
+    @include placeholder {
+      color: $text-muted;
+    }
+
+    &:focus {
+      border-color: #ccc;
+    }
+  }
+
+  textarea {
+    line-height: inherit;
+    padding-top: .625rem;
+    padding-bottom: .625rem;
+  }
+}

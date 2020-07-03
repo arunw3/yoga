@@ -1,0 +1,27 @@
+// main: ../style.scss
+/********************************
+*********************************
+Modals
+*********************************
+*********************************/
+.modal {
+	.close {
+		@include position(absolute, 0 0 null null);
+		transform: translateX(50%) translateY(-50%);
+		@extend %bg-headings-color;
+		opacity: 1;
+		text-shadow: none;
+		@include size(2em);
+		line-height: 2em;
+		border-radius: 100%;
+		color: #fff;
+		z-index: 2;
+		transition: all $transition-duration ease;
+		&:not(:disabled):not(.disabled):hover, 
+		&:not(:disabled):not(.disabled):focus {
+			opacity: 1;
+			@extend %bg-tertiary;
+			color: #fff;
+		}
+	}
+}

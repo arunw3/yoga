@@ -1,0 +1,73 @@
+// main: ../style.scss
+/********************************
+*********************************
+Gallery
+*********************************
+*********************************/
+.gallery {
+
+}
+
+// Size Thumbnail
+.gallery-size-thumbnail {
+	@extend .row;
+
+	figure {
+		display: flex;
+		position: relative;
+		background-size: cover;
+		background-repeat: no-repeat;
+		@extend %transition-base;
+		flex: 1;
+		img {
+			visibility: hidden;
+			height: auto;
+		}
+	}
+
+	figcaption {
+		@include position(absolute, 0);
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	figure:hover {
+		transform: scale(1.03);
+		box-shadow: 0 3px 5px 0 rgba(0,0,0, .1);
+	}
+}
+
+// Title in First Col
+.gallery-title-first-col {	
+	@extend .row;
+	align-items: stretch;
+
+	[class^="col-"] {
+		display: flex;
+		overflow: hidden;
+		padding: 0;
+	}
+	figure {
+		margin-bottom: 0;
+		position: relative;
+		background-size: cover;
+		background-repeat: no-repeat;
+		@extend %transition-base;
+		flex: 1;
+		a {
+			@include position(absolute, 0);
+			color: transparent;
+		}
+		img {
+			opacity: 0;
+		}
+	}
+
+	figcaption {
+		visibility: hidden;
+	}
+
+	figure:hover {
+		transform: scale(1.1);
+	}
+}

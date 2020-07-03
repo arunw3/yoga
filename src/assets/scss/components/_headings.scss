@@ -1,0 +1,230 @@
+// main: ../style.scss
+/********************************
+*********************************
+Headings
+*********************************
+*********************************/
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  letter-spacing: $headings-letter-spacing;
+  a {
+    @extend %headings-color;
+    &:hover { @extend %color-primary; }
+  }
+  .text-white &,
+  .text-white & a {
+    color: #fff; }
+}
+
+h1, .h1,
+h2, .h2 {
+  font-weight: 500; }
+
+h2, .h2 {
+  line-height: 1.3333; }
+
+h5, .h5,
+h6, .h6 {
+  line-height: 1.6667; }
+
+
+/* Page Title Area
+========================*/
+.page-title {
+  text-align: center;
+  padding: 4.5rem 0;
+  @extend %bg-page-title;
+  box-shadow: inset 0px -2px 3px 0px rgba(0, 0, 0, 0.03);
+  margin-bottom: 4.5rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .breadcrumb { text-align: inherit }
+
+  h1 {
+    margin-bottom: 0;
+    letter-spacing: -2px;
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+.page-title-short {
+  @include padding(1.5rem null);
+  .breadcrumb { padding-top: 0; }
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  background: transparent;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  display: block;
+  text-align: center;
+  @extend %font-size-sm;
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  @extend %color-tertiary;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+  a {
+    @extend %color-tertiary;
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+
+    &::after {
+      content: "";
+      @include position(absolute, null null 0 0);
+      height: 1px;
+      width: 100%;
+      @extend %bg-tertiary;
+      opacity: .3;
+      transition-property: opacity;
+      @extend %transition-short-effect;
+    }
+
+    &:hover::after {
+      opacity: 0;
+    }
+
+    &:hover {
+      @extend %color-tertiary;
+    }
+  }
+
+  &.active {
+    @extend %headings-color;
+  }
+
+  & + .breadcrumb-item::before {
+    content: '\002f';
+    @include padding(null .5rem null .25rem);
+    @extend %color-tertiary;
+  }
+}
+
+
+/* Sectional Headings
+========================*/
+.fancy-heading span {
+  @extend %color-dark;
+  display: inline-block;
+}
+
+/* Sub Heading */
+.section-sub-heading {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  @extend %color-muted, %small-font-size;
+  .title {
+    @extend %font-family-base, %color-tertiary; }
+  i {
+    font-size: rem(30);
+    line-height: 1;
+    margin-bottom: rem(10);
+    display: block;
+    opacity: .5;
+  }
+  .text-white & {
+    .title {
+      color: #fff;
+    }
+  }
+}
+
+/* Sub heaing with lines */
+.section-sub-heading-lines {
+  @extend .small-title, %color-muted;
+  display: flex;
+  align-items: flex-end;
+
+  .title {
+    @extend %font-family-base, %color-tertiary;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &:after,
+    &:before {
+      content: '';
+      display: block;
+      height: 1px;
+      width: rem(50);
+      @extend %bg-tertiary;
+      opacity: .5;
+    }
+    &:before { margin-right: rem(15); }
+    &:after { margin-left: rem(15); }
+  }
+
+  i {
+    font-size: rem(30);
+    line-height: 1;
+    @extend %color-tertiary;
+  }
+
+  &.text-white {
+    color: #fff;
+    i {
+      color: rgba(255,255,255,.5);
+    }
+    .title {
+      color: #fff;
+      &:after,
+      &:before {
+        background: #fff;
+      }
+    }
+  }
+
+  &.text-left,
+  &.text-right {
+    flex-direction: row;
+  }
+
+  &.text-left {
+    text-align: left;
+    .title {
+      &:before {
+        display: none;
+      }
+    }
+    i {
+      margin-right: rem(20);
+    }
+  }
+
+  &.text-center {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-bottom: .5em;
+    }
+  }
+
+  &.text-right {
+    text-align: right;
+  }
+}
+
+
+@media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+  .section-sub-heading-lines {
+    .title {
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

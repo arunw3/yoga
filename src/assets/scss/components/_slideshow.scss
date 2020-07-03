@@ -1,0 +1,157 @@
+// main: ../style.scss
+/********************************
+*********************************
+Slick Slideshow
+*********************************
+*********************************/
+.slick-arrow-left,
+.slick-arrow-right {
+  &:focus {
+    outline: none;
+  }
+}
+
+.slick-slider {
+  width: 100%;
+  position: relative;
+}
+
+.slider-item:focus {
+  outline: 0;
+}
+
+/* Home Slideshow */
+.slick-container-home {
+  overflow-x: hidden;
+  .slick-slide {
+    height: 100vh;
+    min-height: rem(480);
+    display: flex;
+    align-items: center;
+  }
+
+  h2 {
+    letter-spacing: -2px;
+  }
+
+  .slick-arrow- {
+    &left, &right {
+      @include size(rem(48));
+      border-radius: 500px;
+      text-align: center;
+      line-height: rem(42);
+      font-size: rem(30);
+      background: #fff;
+      display: inline-block;
+      @extend .vertical-center, %headings-color, %transition-base;
+      opacity: 1;
+      z-index: 9;
+      box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
+
+      &::before {
+        content: '';
+        display: block;
+        @include position(absolute, 0);
+        border-radius: inherit;
+        border: 2px solid #fff;
+        opacity: 0;
+        transition: inherit;
+      }
+
+      &::after {
+        content: '\e92f';
+        font-family: 'Feather';
+        font-size: rem(18);
+      }
+
+      &:focus,
+      &:hover {
+        transform: translateY(-50%) scale(.75);
+        @extend %bg-tertiary;
+        color: #fff;
+        &::before {
+          opacity: 1;
+          @extend %border-color-tertiary;
+          @include position(absolute, -7px);
+        }
+      }
+    }
+
+    &left {
+      left: 40px;
+    }
+
+    &right {
+      right: 40px;
+      &::after { content: '\e930'; }
+    }
+  }
+
+  .slick-dots {
+    @include position(absolute, calc(50% + 80px) rem(52) null null);
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    font-size: rem(5);
+    transform: translateY(-50%);
+
+    li {
+      font-size: inherit;
+      padding: rem(10);
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      @include size(1em);
+      text-indent: -9999px;
+      background: #fff;
+      border: 0;
+      font-size: inherit;
+      padding: 0;
+      border-radius: 100%;
+      opacity: .8;
+      @extend %transition-base;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .slick-active button {
+      @extend .box-shadow-1;
+      opacity: 1;
+    }
+  }
+}
+
+.slick-container-home .slider-item {
+  > * {
+    visibility: hidden;
+  }
+
+  &.slick-current > * {
+    visibility: visible;
+  }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'lg')) {
+  .slick-container-home {
+    .slider-item {
+      @include padding(null rem(40));
+    }
+
+    .slick-dots {
+      display: none !important;
+    }
+
+    .slick-arrow-left {
+      left: -20px;
+      padding-left: 10px;
+    }
+
+    .slick-arrow-right {
+      right: -20px;
+      padding-right: 10px;
+    }
+  }
+}

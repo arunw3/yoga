@@ -1,0 +1,17 @@
+// main: ../style.scss
+/********************************
+*********************************
+Typography
+*********************************
+*********************************/
+blockquote {
+  border-left-width: 5px;
+  border-left-style: solid;
+  @extend %border-left-color-secondary;
+  padding-left: 30px;
+  line-height: 2rem;
+}
+
+blockquote p {
+  display: inline;
+}

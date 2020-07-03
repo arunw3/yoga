@@ -1,0 +1,254 @@
+@font-face {
+    font-family: 'Unifato';
+    src: url('fonts/Unifato.eot?mmax84');
+    src: url('fonts/Unifato.eot?mmax84#iefix') format('embedded-opentype'), url('fonts/Unifato.ttf?mmax84') format('truetype'), url('fonts/Unifato.woff?mmax84') format('woff'), url('fonts/Unifato.svg?mmax84#Unifato') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="unicon-"],
+[class*=" unicon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Unifato' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.unicon-happy:before {
+    content: "\f103";
+}
+
+.unicon-twitter-1:before {
+    content: "\f10c";
+}
+
+.unicon-digg:before {
+    content: "\f131";
+}
+
+.unicon-messenger:before {
+    content: "\f12b";
+}
+
+.unicon-rss:before {
+    content: "\f116";
+}
+
+.unicon-instagram:before {
+    content: "\f121";
+}
+
+.unicon-youtube:before {
+    content: "\f101";
+}
+
+.unicon-lastfm:before {
+    content: "\f136";
+}
+
+.unicon-envato:before {
+    content: "\f12d";
+}
+
+.unicon-deviantart:before {
+    content: "\f132";
+}
+
+.unicon-myspace:before {
+    content: "\f11d";
+}
+
+.unicon-twitter:before {
+    content: "\f10d";
+}
+
+.unicon-wettpad:before {
+    content: "\f107";
+}
+
+.unicon-wordpress:before {
+    content: "\f105";
+}
+
+.unicon-dropbox:before {
+    content: "\f12e";
+}
+
+.unicon-facebook-1:before {
+    content: "\f12a";
+}
+
+.unicon-whatsapp:before {
+    content: "\f106";
+}
+
+.unicon-team-viewer:before {
+    content: "\f110";
+}
+
+.unicon-dribbble:before {
+    content: "\f12f";
+}
+
+.unicon-dislike:before {
+    content: "\f130";
+}
+
+.unicon-delicious:before {
+    content: "\f133";
+}
+
+.unicon-viddler:before {
+    content: "\f10b";
+}
+
+.unicon-soundcloud:before {
+    content: "\f113";
+}
+
+.unicon-forrst:before {
+    content: "\f128";
+}
+
+.unicon-yahoo:before {
+    content: "\f102";
+}
+
+.unicon-picasa:before {
+    content: "\f11a";
+}
+
+.unicon-stumbleupon:before {
+    content: "\f111";
+}
+
+.unicon-snapchat:before {
+    content: "\f114";
+}
+
+.unicon-hangouts:before {
+    content: "\f124";
+}
+
+.unicon-vk:before {
+    content: "\f108";
+}
+
+.unicon-spotify:before {
+    content: "\f112";
+}
+
+.unicon-vine:before {
+    content: "\f109";
+}
+
+.unicon-vimeo:before {
+    content: "\f10a";
+}
+
+.unicon-flickr:before {
+    content: "\f129";
+}
+
+.unicon-kickstarter:before {
+    content: "\f120";
+}
+
+.unicon-github:before {
+    content: "\f126";
+}
+
+.unicon-myspace-1:before {
+    content: "\f11c";
+}
+
+.unicon-xing:before {
+    content: "\f104";
+}
+
+.unicon-twitch:before {
+    content: "\f10e";
+}
+
+.unicon-blogger:before {
+    content: "\f134";
+}
+
+.unicon-google-plus:before {
+    content: "\f122";
+}
+
+.unicon-linkedin:before {
+    content: "\f11e";
+}
+
+.unicon-skype:before {
+    content: "\f115";
+}
+
+.unicon-foursquare:before {
+    content: "\f127";
+}
+
+.unicon-path:before {
+    content: "\f11b";
+}
+
+.unicon-zootool:before {
+    content: "\f100";
+}
+
+.unicon-pinterest:before {
+    content: "\f119";
+}
+
+.unicon-reditt:before {
+    content: "\f117";
+}
+
+.unicon-google-drive:before {
+    content: "\f125";
+}
+
+.unicon-like:before {
+    content: "\f11f";
+}
+
+.unicon-tumblr:before {
+    content: "\f10f";
+}
+
+.unicon-behance:before {
+    content: "\f135";
+}
+
+.unicon-plurk:before {
+    content: "\f118";
+}
+
+.unicon-facebook:before {
+    content: "\f12c";
+}
+
+.unicon-photo:before {
+    content: "\f123";
+}
+
+.unicon-star-half-empty:before {
+    content: "\e900";
+}
+
+.unicon-star-o:before {
+    content: "\e901";
+}
+
+.unicon-star:before {
+    content: "\e902";
+}

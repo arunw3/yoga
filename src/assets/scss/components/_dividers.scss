@@ -1,0 +1,64 @@
+// main: ../style.scss
+/********************************
+*********************************
+Dividers
+*********************************
+*********************************/
+%divider {
+  display: block;
+  border-width: 0;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.divider {
+  @extend %divider;
+}
+
+
+// Dashed
+.divider-dashed {
+  @extend %divider;
+  border-top-style: dashed;
+}
+
+
+// Icon
+.divider-around-border {
+  @extend %divider;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-width: 0;
+  margin: 3em 0;
+
+  .divider-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    border: inherit;
+
+    &:after,
+    &:before {
+      content: '';
+      height: 1px;
+      width: auto;
+      flex: 1;
+      display: block;
+      border-top-width: $border-width;
+      border-top-color: $border-color;
+      border-top-style: inherit;
+      margin: 0 1em;
+    }
+
+    &:before { order: 0; }
+    &:after { order: 2; }
+  }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'lg')) {
+  .divider-around-border .divider-content {
+    width: 100%;
+  }
+}

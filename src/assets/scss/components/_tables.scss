@@ -1,0 +1,14 @@
+// main: ../style.scss
+/********************************
+*********************************
+Tables
+*********************************
+*********************************/
+.table-bordered {
+	border-bottom-width: 0;
+	border-right-width: 0;
+	td, th {
+		border-left-width: 0;
+		border-top-width: 0;
+	}
+}

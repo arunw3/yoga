@@ -1,0 +1,128 @@
+// main: ../style.scss
+/********************************
+*********************************
+Pricing Box
+*********************************
+*********************************/
+.pricing-box {
+  h4 {
+    font-size: rem(60);
+  }
+}
+
+.pricing-currency {
+  @extend %h3-font-size;
+}
+
+.pricing-box-minimal {
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 5px;
+  @include margin(2rem null);
+  background: #f7f7f7;
+
+  header > span {
+    @extend %headings-color;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+    display: block;
+    font-size: .875rem;
+  }
+
+  header > small {
+    font-size: rem(20);
+    letter-spacing: 0;
+    @extend %headings-color;
+  }
+
+  ul {
+    line-height: 2.625rem;
+    margin: 1.25rem 0 2rem;
+  }
+
+  h4 {
+    font-weight: 400;
+    letter-spacing: .05em;
+    margin-bottom: 0;
+    display: inline-block;
+    font-size: rem(72);
+  }
+
+  .pricing-currency {
+    @extend %font-family-base;
+    margin-right: .2em;
+    vertical-align: top;
+  }
+
+  .btn {
+    font-size: em(12);
+    letter-spacing: .1em;
+  }
+
+  &.pricing-box-active {
+    background: #fff;
+    border-width: 1px;
+    border-style: solid;
+    @extend %border-color-theme;
+    position: relative;
+    margin-top: 0;
+    border-radius: 0;
+    @include margin(0 null);
+    @include padding(6rem null);
+
+    h4 {
+      @extend %color-primary;
+      span { color: inherit; }
+    }
+
+    header > small {
+      @extend %color-primary;
+    }
+
+    .btn {
+      font-size: em(15);
+    }
+  }
+}
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+/* Border
+========================*/
+.pricing-box-border{
+  @extend .pricing-box-minimal, %border-color-theme;
+  border-radius: 0;
+  transform: translateY(0);
+  transition-property: transform, box-shadow;
+  @extend %transition-effect;
+  position: relative;
+  margin-left: -1px;
+  border-width: 1px;
+  border-style: solid;
+  background: #fff;
+
+  h4 > small{
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: -10px;
+    color: $input-placeholder-color;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 2;
+  }
+}

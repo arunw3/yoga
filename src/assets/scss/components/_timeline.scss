@@ -1,0 +1,181 @@
+// main: ../style.scss
+/********************************
+*********************************
+Timeline
+*********************************
+*********************************/
+.timelines {
+
+}
+
+// Alternate Image
+.timelines-alternate-image {
+	$paddingValue: rem(80);
+	.timeline-body {
+		padding-left: $paddingValue;
+		padding-right: 0;
+	}
+
+	.timeline-img {
+		padding-right: $paddingValue;
+		padding-left: 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.timeline-heading {
+		@extend %font-family-base;
+		letter-spacing: 0;
+		text-transform: uppercase;
+	}
+
+	.timeline-time {
+		@include position(absolute, 0 50% null null);
+		transform: translateX(50%);
+		font-size: rem(12);
+		line-height: 1em;
+		@extend %font-family-base, %bg-tertiary;
+		text-align: center;
+		@include size(4em);
+		line-height: 4em;
+		border-radius: 100%;
+		color: #fff;
+		letter-spacing: 0;
+	}
+
+	.timeline-trail {
+		display: block;
+		@extend %bg-border-theme-color;
+		width: 3px;
+		@include position(absolute, 0 50% 0 null);
+		transform: translateX(50%);
+		z-index: -1;
+	}
+
+	.timeline-single {
+		position: relative;
+		@include padding(em(100) null);
+		align-items: center;
+
+		&.timeline-single-right {
+			text-align: right;
+			.timeline-img {
+				order: 2;
+				padding-right: 0;
+				padding-left: $paddingValue;
+			}
+
+			.timeline-body {
+				padding-left: 0;
+				padding-right: $paddingValue;
+			}
+
+			.timline-body {
+				order: 1;
+			}
+		}
+	}
+
+	@include mobile {
+		.timeline-single {
+			@include padding( null em(50) );
+			.timeline-img {
+				padding-right: 0;
+				display: block;
+				margin-bottom: em(30);
+			}
+
+			.timeline-body {
+				padding-left: 0;
+			}
+
+			&.timeline-single-right {
+				text-align: inherit;
+				.timeline-img {
+					order: 1;
+					padding-left: 0;
+				}
+
+				.timeline-body {
+					padding-right: 0;
+				}
+
+				.timeline-body {
+					order: 2;
+				}
+			}
+
+			.timeline-trail {
+				left: rem(15);
+				right: auto;
+			}
+
+			.timeline-time {
+				left: rem(15);
+				right: auto;
+				transform: translateX(-50%);
+			}
+		}
+	}
+
+	body.rtl & {
+		.timeline-single {
+			text-align: justify;			
+			.timeline-img {
+				padding-right: 0;
+				padding-left: $paddingValue; 
+			}
+			.timeline-body {
+				padding-right: $paddingValue;
+				padding-left: 0;
+			}
+
+			&.timeline-single-right {
+				text-align: left;
+				.timeline-img {
+					padding-left: 0;
+					padding-right: $paddingValue;
+				}
+
+				.timeline-body {
+					padding-right: 0;
+					padding-left: $paddingValue;
+				}
+			}
+		}
+
+		@include mobile {
+			.timeline-single {
+				.timeline-img {
+					padding-left: 0;
+				}
+
+				.timeline-body {
+					padding-right: 0;
+				}
+
+				&.timeline-single-right {
+					text-align: justify;
+					.timeline-img {
+						padding-right: 0;
+					}
+
+					.timeline-body {
+						padding-left: 0;
+					}
+				}
+			}
+
+			.timeline-trail {
+				left: auto;
+				right: rem(15);
+			}
+
+			.timeline-time {
+				left: auto;
+				right: rem(15);
+				transform: translateX(50%);
+			}
+		}
+	}
+}

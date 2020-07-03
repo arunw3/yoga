@@ -1,0 +1,63 @@
+// main: ../style.scss
+/********************************
+*********************************
+Calendar
+*********************************
+*********************************/
+%contact-info {
+	position: relative;
+}
+
+/* Icon Left
+========================*/
+.contact-info-icon-left {
+	@extend %contact-info, .media;
+	.contact-info-content {
+		@extend .media-body;
+		font-size: rem(14);
+		line-height: rem(28);
+		font-weight: 500;
+	}
+	i {
+		font-size: rem(18);
+		line-height: rem(28);
+		margin-right: rem(25);
+		color: $text-muted;
+	}
+	.contact-info-title {
+		color: $text-muted;
+		@extend %font-family-base;
+		letter-spacing: 0;
+		font-size: inherit;
+		line-height: inherit;
+		font-weight: inherit;
+		@include margin(0 null);
+	}
+	span {
+		display: block;
+		@extend %headings-color;
+	}
+}
+
+/* Image Over
+========================*/
+.contact-info-img-over {
+	@extend %contact-info;
+	figure {
+	}
+
+	.contact-info-content {
+		@extend .text-white;
+		@include position(absolute, 0);
+		background: rgba(0,0,0,.4);
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.contact-info-title {
+		font-family: $font-family-base;
+		margin: 0 0 1em;
+	}
+}

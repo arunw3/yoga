@@ -1,0 +1,535 @@
+/*
+* Name:        Vibes Html
+* Written by:   Unifato - (http://unifato.com)
+* Version:      1.0.0
+*/
+
+/* Page Pre Loader
+========================*/
+
+body:after {
+    z-index: 1001;
+    content: '';
+    background: url("./../../assets/img/logo-loader.png") no-repeat;
+    height: 86px;
+    width: 104px;
+    position: fixed;
+    top: calc(50% - 93px);
+    left: calc(50% - 52px);
+    display: block;
+    margin: 0 auto;
+    animation: flipInY 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate;
+}
+
+body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #221c25 0%, #221c25 50%, #251f28 50%, #251f28 100%);
+}
+
+body .wrapper::before {
+    content: 'vibes';
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: block;
+    color: #fff;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 72px;
+    line-height: 1;
+    z-index: 1001;
+    position: fixed;
+    top: calc(50% - 10px);
+    left: calc(50% - 93px);
+}
+
+body.pace-completed .wrapper::before,
+body.pace-completed:before,
+body.pace-completed:after {
+    display: none;
+}
+
+.pace {
+    position: fixed;
+    top: calc(50% + 100px);
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-flow: column-reverse;
+    z-index: 1001;
+    transition: width 0.3s ease;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+body.rtl .pace {
+    direction: ltr;
+}
+
+.pace body.pace-completed {
+    display: none;
+}
+
+.pace-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pace-active * {
+    box-sizing: border-box;
+}
+
+.pace-inactive {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.pace-progress {
+    transform: none !important;
+}
+
+.pace-progress::before {
+    content: " " attr(data-progress-text) " ";
+    color: #fff;
+    text-align: center;
+}
+
+.pace-progress {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.pace-progress-inner,
+.pace-progress::after {
+    display: block;
+    height: 6px;
+    width: 150px;
+    border-radius: 20px;
+    transition: all .2s ease;
+}
+
+.pace-progress::after {
+    content: '';
+    box-shadow: inset 0 0 0 1px #eee;
+    background: none;
+    z-index: -1;
+    opacity: .1;
+}
+
+.pace-progress-inner {
+    background: #08cc96;
+    background: var(--tertiary);
+    transform-origin: left;
+    bottom: -6px;
+    position: relative;
+}
+
+.pace-progress[data-progress-text="1%"] .pace-progress-inner {
+    max-width: 1.5px;
+}
+
+.pace-progress[data-progress-text="2%"] .pace-progress-inner {
+    max-width: 3px;
+}
+
+.pace-progress[data-progress-text="3%"] .pace-progress-inner {
+    max-width: 4.5px;
+}
+
+.pace-progress[data-progress-text="4%"] .pace-progress-inner {
+    max-width: 6px;
+}
+
+.pace-progress[data-progress-text="5%"] .pace-progress-inner {
+    max-width: 7.5px;
+}
+
+.pace-progress[data-progress-text="6%"] .pace-progress-inner {
+    max-width: 9px;
+}
+
+.pace-progress[data-progress-text="7%"] .pace-progress-inner {
+    max-width: 10.5px;
+}
+
+.pace-progress[data-progress-text="8%"] .pace-progress-inner {
+    max-width: 12px;
+}
+
+.pace-progress[data-progress-text="9%"] .pace-progress-inner {
+    max-width: 13.5px;
+}
+
+.pace-progress[data-progress-text="10%"] .pace-progress-inner {
+    max-width: 15px;
+}
+
+.pace-progress[data-progress-text="11%"] .pace-progress-inner {
+    max-width: 16.5px;
+}
+
+.pace-progress[data-progress-text="12%"] .pace-progress-inner {
+    max-width: 18px;
+}
+
+.pace-progress[data-progress-text="13%"] .pace-progress-inner {
+    max-width: 19.5px;
+}
+
+.pace-progress[data-progress-text="14%"] .pace-progress-inner {
+    max-width: 21px;
+}
+
+.pace-progress[data-progress-text="15%"] .pace-progress-inner {
+    max-width: 22.5px;
+}
+
+.pace-progress[data-progress-text="16%"] .pace-progress-inner {
+    max-width: 24px;
+}
+
+.pace-progress[data-progress-text="17%"] .pace-progress-inner {
+    max-width: 25.5px;
+}
+
+.pace-progress[data-progress-text="18%"] .pace-progress-inner {
+    max-width: 27px;
+}
+
+.pace-progress[data-progress-text="19%"] .pace-progress-inner {
+    max-width: 28.5px;
+}
+
+.pace-progress[data-progress-text="20%"] .pace-progress-inner {
+    max-width: 30px;
+}
+
+.pace-progress[data-progress-text="21%"] .pace-progress-inner {
+    max-width: 31.5px;
+}
+
+.pace-progress[data-progress-text="22%"] .pace-progress-inner {
+    max-width: 33px;
+}
+
+.pace-progress[data-progress-text="23%"] .pace-progress-inner {
+    max-width: 34.5px;
+}
+
+.pace-progress[data-progress-text="24%"] .pace-progress-inner {
+    max-width: 36px;
+}
+
+.pace-progress[data-progress-text="25%"] .pace-progress-inner {
+    max-width: 37.5px;
+}
+
+.pace-progress[data-progress-text="26%"] .pace-progress-inner {
+    max-width: 39px;
+}
+
+.pace-progress[data-progress-text="27%"] .pace-progress-inner {
+    max-width: 40.5px;
+}
+
+.pace-progress[data-progress-text="28%"] .pace-progress-inner {
+    max-width: 42px;
+}
+
+.pace-progress[data-progress-text="29%"] .pace-progress-inner {
+    max-width: 43.5px;
+}
+
+.pace-progress[data-progress-text="30%"] .pace-progress-inner {
+    max-width: 45px;
+}
+
+.pace-progress[data-progress-text="31%"] .pace-progress-inner {
+    max-width: 46.5px;
+}
+
+.pace-progress[data-progress-text="32%"] .pace-progress-inner {
+    max-width: 48px;
+}
+
+.pace-progress[data-progress-text="33%"] .pace-progress-inner {
+    max-width: 49.5px;
+}
+
+.pace-progress[data-progress-text="34%"] .pace-progress-inner {
+    max-width: 51px;
+}
+
+.pace-progress[data-progress-text="35%"] .pace-progress-inner {
+    max-width: 52.5px;
+}
+
+.pace-progress[data-progress-text="36%"] .pace-progress-inner {
+    max-width: 54px;
+}
+
+.pace-progress[data-progress-text="37%"] .pace-progress-inner {
+    max-width: 55.5px;
+}
+
+.pace-progress[data-progress-text="38%"] .pace-progress-inner {
+    max-width: 57px;
+}
+
+.pace-progress[data-progress-text="39%"] .pace-progress-inner {
+    max-width: 58.5px;
+}
+
+.pace-progress[data-progress-text="40%"] .pace-progress-inner {
+    max-width: 60px;
+}
+
+.pace-progress[data-progress-text="41%"] .pace-progress-inner {
+    max-width: 61.5px;
+}
+
+.pace-progress[data-progress-text="42%"] .pace-progress-inner {
+    max-width: 63px;
+}
+
+.pace-progress[data-progress-text="43%"] .pace-progress-inner {
+    max-width: 64.5px;
+}
+
+.pace-progress[data-progress-text="44%"] .pace-progress-inner {
+    max-width: 66px;
+}
+
+.pace-progress[data-progress-text="45%"] .pace-progress-inner {
+    max-width: 67.5px;
+}
+
+.pace-progress[data-progress-text="46%"] .pace-progress-inner {
+    max-width: 69px;
+}
+
+.pace-progress[data-progress-text="47%"] .pace-progress-inner {
+    max-width: 70.5px;
+}
+
+.pace-progress[data-progress-text="48%"] .pace-progress-inner {
+    max-width: 72px;
+}
+
+.pace-progress[data-progress-text="49%"] .pace-progress-inner {
+    max-width: 73.5px;
+}
+
+.pace-progress[data-progress-text="50%"] .pace-progress-inner {
+    max-width: 75px;
+}
+
+.pace-progress[data-progress-text="51%"] .pace-progress-inner {
+    max-width: 76.5px;
+}
+
+.pace-progress[data-progress-text="52%"] .pace-progress-inner {
+    max-width: 78px;
+}
+
+.pace-progress[data-progress-text="53%"] .pace-progress-inner {
+    max-width: 79.5px;
+}
+
+.pace-progress[data-progress-text="54%"] .pace-progress-inner {
+    max-width: 81px;
+}
+
+.pace-progress[data-progress-text="55%"] .pace-progress-inner {
+    max-width: 82.5px;
+}
+
+.pace-progress[data-progress-text="56%"] .pace-progress-inner {
+    max-width: 84px;
+}
+
+.pace-progress[data-progress-text="57%"] .pace-progress-inner {
+    max-width: 85.5px;
+}
+
+.pace-progress[data-progress-text="58%"] .pace-progress-inner {
+    max-width: 87px;
+}
+
+.pace-progress[data-progress-text="59%"] .pace-progress-inner {
+    max-width: 88.5px;
+}
+
+.pace-progress[data-progress-text="60%"] .pace-progress-inner {
+    max-width: 90px;
+}
+
+.pace-progress[data-progress-text="61%"] .pace-progress-inner {
+    max-width: 91.5px;
+}
+
+.pace-progress[data-progress-text="62%"] .pace-progress-inner {
+    max-width: 93px;
+}
+
+.pace-progress[data-progress-text="63%"] .pace-progress-inner {
+    max-width: 94.5px;
+}
+
+.pace-progress[data-progress-text="64%"] .pace-progress-inner {
+    max-width: 96px;
+}
+
+.pace-progress[data-progress-text="65%"] .pace-progress-inner {
+    max-width: 97.5px;
+}
+
+.pace-progress[data-progress-text="66%"] .pace-progress-inner {
+    max-width: 99px;
+}
+
+.pace-progress[data-progress-text="67%"] .pace-progress-inner {
+    max-width: 100.5px;
+}
+
+.pace-progress[data-progress-text="68%"] .pace-progress-inner {
+    max-width: 102px;
+}
+
+.pace-progress[data-progress-text="69%"] .pace-progress-inner {
+    max-width: 103.5px;
+}
+
+.pace-progress[data-progress-text="70%"] .pace-progress-inner {
+    max-width: 105px;
+}
+
+.pace-progress[data-progress-text="71%"] .pace-progress-inner {
+    max-width: 106.5px;
+}
+
+.pace-progress[data-progress-text="72%"] .pace-progress-inner {
+    max-width: 108px;
+}
+
+.pace-progress[data-progress-text="73%"] .pace-progress-inner {
+    max-width: 109.5px;
+}
+
+.pace-progress[data-progress-text="74%"] .pace-progress-inner {
+    max-width: 111px;
+}
+
+.pace-progress[data-progress-text="75%"] .pace-progress-inner {
+    max-width: 112.5px;
+}
+
+.pace-progress[data-progress-text="76%"] .pace-progress-inner {
+    max-width: 114px;
+}
+
+.pace-progress[data-progress-text="77%"] .pace-progress-inner {
+    max-width: 115.5px;
+}
+
+.pace-progress[data-progress-text="78%"] .pace-progress-inner {
+    max-width: 117px;
+}
+
+.pace-progress[data-progress-text="79%"] .pace-progress-inner {
+    max-width: 118.5px;
+}
+
+.pace-progress[data-progress-text="80%"] .pace-progress-inner {
+    max-width: 120px;
+}
+
+.pace-progress[data-progress-text="81%"] .pace-progress-inner {
+    max-width: 121.5px;
+}
+
+.pace-progress[data-progress-text="82%"] .pace-progress-inner {
+    max-width: 123px;
+}
+
+.pace-progress[data-progress-text="83%"] .pace-progress-inner {
+    max-width: 124.5px;
+}
+
+.pace-progress[data-progress-text="84%"] .pace-progress-inner {
+    max-width: 126px;
+}
+
+.pace-progress[data-progress-text="85%"] .pace-progress-inner {
+    max-width: 127.5px;
+}
+
+.pace-progress[data-progress-text="86%"] .pace-progress-inner {
+    max-width: 129px;
+}
+
+.pace-progress[data-progress-text="87%"] .pace-progress-inner {
+    max-width: 130.5px;
+}
+
+.pace-progress[data-progress-text="88%"] .pace-progress-inner {
+    max-width: 132px;
+}
+
+.pace-progress[data-progress-text="89%"] .pace-progress-inner {
+    max-width: 133.5px;
+}
+
+.pace-progress[data-progress-text="90%"] .pace-progress-inner {
+    max-width: 135px;
+}
+
+.pace-progress[data-progress-text="91%"] .pace-progress-inner {
+    max-width: 136.5px;
+}
+
+.pace-progress[data-progress-text="92%"] .pace-progress-inner {
+    max-width: 138px;
+}
+
+.pace-progress[data-progress-text="93%"] .pace-progress-inner {
+    max-width: 139.5px;
+}
+
+.pace-progress[data-progress-text="94%"] .pace-progress-inner {
+    max-width: 141px;
+}
+
+.pace-progress[data-progress-text="95%"] .pace-progress-inner {
+    max-width: 142.5px;
+}
+
+.pace-progress[data-progress-text="96%"] .pace-progress-inner {
+    max-width: 144px;
+}
+
+.pace-progress[data-progress-text="97%"] .pace-progress-inner {
+    max-width: 145.5px;
+}
+
+.pace-progress[data-progress-text="98%"] .pace-progress-inner {
+    max-width: 147px;
+}
+
+.pace-progress[data-progress-text="99%"] .pace-progress-inner {
+    max-width: 148.5px;
+}
+
+.pace-progress[data-progress-text="100%"] .pace-progress-inner {
+    max-width: 150px;
+}
+
+/*# sourceMappingURL=pace.css.map */

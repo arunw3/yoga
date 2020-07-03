@@ -1,0 +1,147 @@
+// main: ../style.scss
+/********************************
+*********************************
+Error Page
+*********************************
+*********************************/
+%error-page-form {
+	.btn {
+		@extend .bg-gradient-3;
+		@include padding(null 1em);
+		border-radius: 0;
+		border-width: 0;
+		i { font-size: rem(18) }
+	}
+	
+	input[type="search"],
+	input[type="email"] {
+		border-width: 1px;
+		border-radius: 0;
+		@extend %font-size-base;
+	}
+}
+
+.error-page {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	text-align: center;
+}
+
+.error-title {
+	@extend %font-family-base, .bg-gradient-5;
+	font-size: rem(180);
+	margin-bottom: rem(50);
+	color: rgba(0,0,0,0);
+	text-shadow: -3px 3px 0 rgba(0,0,0,.05);
+	background-clip: text;
+	-webkit-background-clip: text;
+	line-height: 1;
+	font-weight: 800;
+}
+
+.error-subtitle {
+	margin: 0 auto .5em;
+	@extend %font-family-base, %h2-font-size;
+	font-weight: 500;
+}
+
+.error-page {
+	.error-search-form {
+		margin-top: rem(30);
+		@extend %error-page-form;
+	}
+
+	p a:not(.btn) {
+		@extend %headings-color;
+		&:after {
+			@extend %bg-headings-color;
+		}
+	}
+}
+
+
+
+/* Coming Soon
+========================*/
+.coming-soon-page {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	text-align: center;
+
+	.coming-soon-title {
+		font-size: rem(48);
+		letter-spacing: .1em;
+		@extend %font-family-base;
+		margin-bottom: rem(10);
+		text-transform: uppercase;
+	}
+
+	.newsletter-title {
+		@extend %font-family-base;
+		font-weight: 500;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+	}
+
+	.newsletter-form {
+		@extend %error-page-form;
+	}
+
+	.countdown {
+		margin-top: 300px;
+	}
+
+	.social-links {
+		background: #fff;
+		box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+		@include position(fixed, 50% null null 20px);
+		transform: translateY(-50%);
+		.divider {
+			margin: 1em auto;
+			width: rem(40);
+		}
+	}
+
+	.social-list {
+		margin-bottom: 0;
+		display: none;
+		li {
+			display: block; 
+			@include margin(null 0 0 null);
+			a {
+				display: flex;
+				flex-flow: column;
+				@extend %headings-color;
+				padding: em(15);
+				line-height: 1.5;
+			}
+			i { 
+				margin-bottom: .6em;
+				font-size: rem(18);
+			}
+			span {
+				font-weight: bold;
+			}
+			small {
+				text-transform: uppercase;
+				letter-spacing: .1em;
+			}
+			&:last-child {
+				margin-left: 0;
+			}
+			&:not(:last-child) {
+				border-bottom-width: 1px;
+				border-bottom-style: solid;
+				@extend %border-color-theme;
+			}
+		}
+	}
+
+	@media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+		.social-list {
+			display: block;
+		}
+	}
+}

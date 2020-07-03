@@ -1,0 +1,119 @@
+// main: ../style.scss
+/********************************
+*********************************
+BlogPost Thumbs
+*********************************
+*********************************/
+.blogpost-thumbs {
+  .post {
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    @extend %border-color-theme;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 0px 5px 0px;
+    transition-property: box-shadow;
+    @extend %transition-effect;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px 0px;
+    }
+  }
+
+  figure {
+    margin-bottom: 0;
+  }
+}
+
+/* Mediabox - With images on left/right
+========================= */
+.blogpost-mediabox {
+  > .row > [class*="col"] {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .post {
+    min-height: rem(380);
+  }
+  .read-more-link,
+  .entry-title a:hover {
+    @extend %color-tertiary;
+  }
+  a {
+    display: block;
+  }
+  .post {
+    align-items: stretch;
+    border: 0;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.05);
+    @include padding(0);
+  }
+
+  .entry-thumbnail {
+    @include margin(null 0);
+  }
+
+  figure {
+    background-size: cover;
+    max-width: 50%;
+    position: relative;
+    img {
+      visibility: hidden;
+    }
+  }
+
+  .media-body {
+    padding: 2.25rem 1.25rem 2.25rem 1.875rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  }
+
+  .entry-time {
+    margin-bottom: 1em;
+  }
+
+  h5 {
+    font-size: 1.375rem;
+    line-height: 2.25rem;
+    font-weight: 400;
+    @extend %font-family-base;
+    letter-spacing: .02em;
+    margin-bottom: 1em;
+  }
+
+  .meta-reply,
+  .entry-share-link {
+    display: inline-block;
+  }
+
+  footer {
+    a {
+      color: $input-placeholder-color;
+      &:hover { @extend %color-primary; }
+    }
+
+    i {
+      font-size: 1.125rem;
+      margin-right: .2em;
+      vertical-align: middle;
+    }
+  }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'lg')) {
+  .blogpost-mediabox .post {
+    flex-flow: column;
+    padding-bottom: em(20);
+    figure {
+      max-width: none;
+      width: 100%;
+    }
+
+    .entry-time {
+      margin-bottom: em(20);
+    }
+  }
+}

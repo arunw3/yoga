@@ -1,0 +1,35 @@
+// main: ../style.scss
+/********************************
+*********************************
+Custom Helpers
+*********************************
+*********************************/
+.bg-gradient-1 {
+  background: linear-gradient(90deg, $tertiary, lighten($tertiary, 10%));
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.5)), var(--tertiary);
+}
+
+.bg-gradient-2 {
+  background: linear-gradient(45deg, $primary, $secondary);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+.bg-gradient-3 {
+  background: linear-gradient(225deg, $primary, $secondary);
+  background: linear-gradient(225deg, var(--primary), var(--secondary));
+}
+
+.bg-gradient-4 {
+  background-image: linear-gradient($primary, $primary), linear-gradient($input-border-color, $input-border-color);
+  background-image: linear-gradient(var(--primary), var(--primary)), linear-gradient($input-border-color, $input-border-color);
+}
+
+.bg-gradient-5 {
+  background: linear-gradient(135deg, $primary, $secondary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.box-shadow-1 {
+  box-shadow: 0 0 0 .8em $tertiary;
+  box-shadow: 0 0 0 .8em var(--tertiary);
+}

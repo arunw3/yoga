@@ -1,0 +1,258 @@
+// main: ../style.scss
+/********************************
+*********************************
+Icon Boxes
+*********************************
+*********************************/
+.icon-box {
+  i {
+    @extend %h3-font-size;
+  }
+
+  h6 {
+    margin-bottom: .5em;
+    @extend %font-family-base;
+    letter-spacing: 0.05em;
+  }
+
+  figure {
+    margin-bottom: 1.5rem;
+  }
+
+  &.media figure {
+    margin: 0 25px 0 0;
+  }
+
+  &.text-right figure {
+    margin: 0 0 0 15px;
+  }
+}
+
+.icon-box.icon-box-lg {
+  i {
+    @extend %h1-font-size;
+  }
+
+  h6 {
+    @extend %h5-font-size;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  &.media figure {
+    margin: 0 20px 0 0;
+  }
+
+  &.text-right figure {
+    margin: 0 0 0 20px;
+  }
+}
+
+.icon-box.icon-box-sm {
+  i {
+    @extend %h3-font-size;
+  }
+}
+
+
+/* Default Style
+========================*/
+.icon-box-default {
+}
+
+
+/* Circle & Border Styles
+========================*/
+.icon-box-circle,
+.icon-box-border {
+ figure {
+    @include size(4rem);
+    text-align: center;
+    border-radius: 4rem;
+
+    i {
+      line-height: 4rem;
+    }
+  }
+
+  h6 {
+    margin-top: .625rem;
+  }
+
+  &.icon-box-sm {
+    figure {
+      @include size(3rem);
+    }
+
+    i {
+      line-height: 3rem;
+    }
+
+    h6 {
+      margin-top: 0;
+    }
+  }
+
+  &.icon-box-lg {
+    figure {
+      @include size(6rem)
+    }
+
+    i {
+      line-height: 6rem;
+    }
+  }
+}
+
+
+/* Circle
+========================*/
+.icon-box-circle {
+  &:hover figure {
+    -webkit-animation: slide-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) 4 alternate both;
+    animation: slide-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) 4 alternate both;
+  }
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+
+
+/* Border
+========================*/
+.icon-box-border{
+  background: transparent;
+
+  figure {
+    position: relative;
+
+    &::before {
+      content: "";
+      @include position(absolute, 0 0 0 0);
+      border-radius: 50rem;
+      border-width: 2px;
+      border-style: solid;
+      @extend %border-color-theme;
+    }
+  }
+
+  &:hover figure::before {
+    border-style: dashed;
+    -webkit-animation: element-rotate 12s linear infinite;
+    animation: element-rotate 12s linear infinite;
+  }
+}
+
+@-webkit-keyframes element-rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes element-rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Fancy
+========================*/
+.icon-box-fancy {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: rem(50) rem(20);
+  margin-bottom: 2em;
+  cursor: pointer;
+  &.media {
+    figure {
+      margin-right: 0;
+      margin-bottom: 2em;
+      box-shadow: 0 0 0 10px rgba(0,0,0,.02);
+      border-radius: 500px;
+      i {
+        display: block;
+        @include size(1.75em);
+        line-height: 1.75em;
+      }
+    }
+  }
+  &, h6, figure, p {
+    @extend %transition-base;
+    position: relative;
+  }
+  h6 {
+    @extend %h5-font-size;
+    line-height: 2;
+  }
+  h6, figure {
+    bottom: rem(-50);
+  }
+  p {
+    opacity: 0;
+    bottom: rem(-50);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &:hover {
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.05);
+    h6, figure {
+      bottom: 0;
+    }
+    p {
+      opacity: 1;
+      bottom: 0;
+      transition-delay: 50ms;
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, 'sm')) {
+  .icon-box-fancy {
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.05);
+    h6, figure {
+      bottom: 0;
+    }
+    p {
+      opacity: 1;
+      bottom: 0;
+      transition-delay: 50ms;
+    }
+  }
+}

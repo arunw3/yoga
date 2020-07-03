@@ -1,0 +1,149 @@
+// main: style.scss
+$theme-name: 'Vibes Html';
+$theme-slug: 'vibes-html';
+$theme-breakpoint: 960px;
+
+// Content
+$wrapper-top-padding: 0;
+$transition-duration: 0.6s;
+$transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+$transition-effect: $transition-duration $transition-timing-function;
+$transition-base: all $transition-effect;
+$animation-duration: $transition-duration;
+
+$transition-short-duration: 200ms;
+$transition-short-timing-function: ease-in;
+$transition-short-effect: $transition-short-duration $transition-short-timing-function;
+$transition-short: all $transition-short-effect;
+
+// Header
+$nav-height: 5rem; 	// 80px
+$sticky-nav-height: 3.75rem; // 60px
+$page-title-bg: #fafbfd;
+$nav-min-submenu-width: 14rem;
+
+$nav-menu-item-font-size: 14px; // keep it in px
+
+// Sidebar
+$sidebar-width: 21.875rem; // 350px
+
+
+// Theme Colors
+$primary:       			#f42958; // the darker color of the gradient used
+$secondary:     			#e3432a; // the lighter color of the gradient used
+$tertiary:						#08cc96; // mostly used for buttons #43c2c0
+$theme-border-color: 	#eee;
+$dark:								#002c5b;
+$dark-hover:					lighten($dark, 5%);
+
+
+$theme-colors: (
+	tertiary: $tertiary,
+	dark: $dark,
+	dark-hover: $dark-hover,
+	facebook: #4b64a6,
+	twitter: #0dace3,
+	googleplus: #dd4b39,
+	linkedin: #007bb6,
+	instagram: #c13584,
+	pinterest: #cb2027,
+	dribbble: #ea4c89,
+	youtube: #e74c3c,
+	info: #17bff0,
+	warning: #f5ff30,
+	danger: #ff3333,
+	success: #38d57a,
+	light: #ccc,
+	transparent: transparent,
+
+	page-title: $page-title-bg,
+);
+
+// Borders
+$border-width: 1px;
+
+
+// Links
+$link-color:            $tertiary;
+$link-hover-color:      $tertiary;
+$link-hover-decoration: none;
+
+// Enable Settings
+$enable-shadows: 				false;
+
+// Fonts
+$text-muted:			#ccc;
+$body-color:			#777;
+
+$font-family-sans-serif: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$headings-font-family:	Prata, sans-serif;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$quotes-font-family: "PT Serif", Georgia, Serif;
+$font-family-serif: Georgia, $headings-font-family;
+
+$font-size-base-px:	15px;
+$font-size-base:		0.9375rem;
+$font-size-sm:			.6875rem; // Assumes the browser default, typically `16px`
+$line-height-base:	2;
+
+
+// Headings
+$h1-font-size: 3rem; 			// 48px
+$h2-font-size: 2.25rem; 	// 36px
+$h3-font-size: 1.875rem; 	// 30px
+$h4-font-size: 1.500rem; 	// 24px
+$h5-font-size: 1.125rem; 	// 18px
+$h6-font-size: 0.9375rem;	// 15px
+
+$headings-margin-bottom: 1.25rem;
+$headings-font-weight:   600;
+$headings-line-height:   1.25;
+$headings-color:         #222;
+$headings-letter-spacing: -.05em;
+
+$theme-colors: map-merge($theme-colors, (headings-color: $headings-color));
+
+$fancy-headings-color:   #002c5b;
+
+// Buttons
+$input-btn-padding-y:         .9rem;
+$input-btn-padding-x:         1.75rem;
+$input-btn-line-height:       1.5;
+
+$input-btn-padding-y-sm:      .5rem;
+$input-btn-padding-x-sm:      1rem;
+$input-btn-line-height-sm:    1;
+
+$input-btn-padding-y-lg:      1rem;
+$input-btn-padding-x-lg:      2.5rem;
+$input-btn-line-height-lg:    2;
+
+$input-btn-border-width: 			1px;
+$form-group-margin-bottom: 		2rem;
+
+
+// Forms
+$input-color: $headings-color;
+$input-placeholder-color: #ccc;
+$input-border-color: $theme-border-color;
+$input-border-radius: 0;
+$input-focus-border-color: $theme-border-color;
+$input-focus-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+
+$input-height: 3.125rem;
+$input-height-sm: 3rem;
+$input-height-lg: 4.6875rem;
+
+$input-padding-x: 30px;
+$input-padding-x-lg: 45px;
+$input-padding-x-sm: 20px;
+
+$input-padding-y: 10px;
+$input-padding-y-lg: 20px;
+$input-padding-y-sm: 5px;
+
+$input-placeholder-color: $body-color;
+
+$input-btn-focus-box-shadow: none;
+
+$custom-control-indicator-bg: #eee;

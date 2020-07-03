@@ -1,0 +1,132 @@
+// compileExpanded ../css/$1.css
+@import "variables";
+@import "vendors/bourbon";
+
+/*
+* Name:        #{ $theme-name }
+* Written by:   Unifato - (http://unifato.com)
+* Version:      1.0.0
+*/
+
+/* Page Pre Loader
+========================*/
+body {
+  &:after {
+    z-index: 1001;
+    content: '';
+    background: url('./../../assets/img/logo-loader.png') no-repeat;
+    @include size(104px, 86px);
+    @include position(fixed, calc(50% - 93px) null null calc(50% - 52px));
+    display: block;
+    margin: 0 auto;
+    animation: flipInY 1.5s $transition-timing-function infinite alternate;
+  }
+
+  &:before {
+    content: "";
+    @include position(fixed, 0);
+    z-index: 1000;
+    background: linear-gradient(to right, #221c25 0%,#221c25 50%,#251f28 50%,#251f28 100%);
+  }
+
+  .wrapper::before {
+    content: 'vibes';
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: block;
+    color: #fff;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 72px;
+    line-height: 1;
+    z-index: 1001;
+    @include position(fixed, calc(50% - 10px) null null calc(50% - 93px));
+  }
+
+  &.pace-completed .wrapper::before,
+  &.pace-completed:before,
+  &.pace-completed:after {
+    display: none;
+  }
+}
+
+.pace {
+  @include position(fixed, calc(50% + 100px) null null 50%);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-flow: column-reverse;
+  z-index: 1001;
+  transition: width 0.3s ease;
+  transform: translateY(-50%) translateX(-50%);
+
+  body.rtl & {
+    direction: ltr;
+  }
+
+  body.pace-completed {
+    display: none;
+  }
+}
+
+.pace-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pace-active * {
+  box-sizing: border-box;
+}
+
+.pace-inactive {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pace-progress {
+  transform: none !important;
+}
+
+.pace-progress::before {
+  content: ' ' attr(data-progress-text) ' ';
+  color: #fff;
+  text-align: center;
+}
+
+.pace-progress {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.pace-progress-inner,
+.pace-progress::after {
+  display: block;
+  @include size(150px, 6px);
+  border-radius: 20px;
+  transition: all .2s ease;
+}
+
+.pace-progress::after {
+  content: '';
+  box-shadow: inset 0 0 0 1px $theme-border-color;
+  background: none;
+  z-index: -1;
+  opacity: .1;
+}
+
+.pace-progress-inner {
+  background: $tertiary;
+  background: var(--tertiary);
+  transform-origin: left;
+  bottom: -6px;
+  position: relative;
+}
+
+@for $i from 1 through 100 {
+  .pace-progress[data-progress-text="#{$i}%"] .pace-progress-inner {
+    max-width: #{(150 * $i / 100)}px;
+  }
+}

@@ -1,0 +1,12 @@
+// main: ../style.scss
+:root {
+  --link-color: #{$link-color};
+  --link-hover-color: #{$link-hover-color};
+  --theme-border-color: #{$theme-border-color};
+  --body-color: #{$body-color};
+
+  --font-family-serif: #{$font-family-serif};
+  --font-family-base: #{$font-family-base};
+  --headings-font-family: #{$headings-font-family};
+  --quotes-font-family: #{$quotes-font-family};
+}
