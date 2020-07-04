@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+.vibes-vibes:before {
+  content: url(./assets/img/icon.png);
+}
+
+.section-sub-heading-lines.text-left i {
+  margin-right: 0.25rem;
+  position: relative;
+  top: 10px;
+}
