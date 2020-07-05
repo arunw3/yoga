@@ -1,15 +1,15 @@
-(function($) {
+(function ($) {
     'use strict';
 
     var Unifato = {
-        init: function() {
+        init: function () {
             this.header();
             this.sidebar();
             this.content();
             this.enablePlugins();
         },
 
-        enablePlugins: function() {
+        enablePlugins: function () {
             this.enablePace();
             this.slickSlider();
             this.shareBlogposts();
@@ -19,15 +19,15 @@
             this.enableCountup();
         },
 
-        header: function() {
+        header: function () {
             this.enableMenuSearch();
             this.enableShoppingWidget();
             this.menuToggler();
         },
 
-        sidebar: function() {},
+        sidebar: function () { },
 
-        content: function() {
+        content: function () {
             this.inputFocus();
             this.enableSidebar();
             this.enableSidebarToggle();
@@ -39,13 +39,13 @@
             // this.enableSocialWidgetCounters();
         },
 
-        enablePace: function() {
+        enablePace: function () {
             // Pace.on('done', function() {
             //   $(document).trigger('PACE_DONE');
             // });
         },
 
-        slickSlider: function() {
+        slickSlider: function () {
             var $containers = $('.slick-container');
 
             if (!$containers.length) return;
@@ -59,11 +59,11 @@
                 focusOnSelect: true,
             };
 
-            $containers.each(function() {
+            $containers.each(function () {
                 var $container = $(this);
                 var $sliders = $container.find('.slick-slider, .slick-slider-nav');
 
-                $sliders.each(function() {
+                $sliders.each(function () {
                     var $slider = $(this);
                     var options = $slider.data('slick');
                     if (options === undefined || options === null) options = {};
@@ -83,7 +83,7 @@
                     //////
                     // Adding animation to slider caption
                     //////
-                    var addAnimation = function($el) {
+                    var addAnimation = function ($el) {
                         var anim = $el.data('animation-in');
 
                         if ($el.data('animation-in-delay'))
@@ -96,18 +96,18 @@
                         $el[0].classList.add('animated');
                     }
 
-                    var animateCaptions = function($slider, currentSlide, nextSlide) {
+                    var animateCaptions = function ($slider, currentSlide, nextSlide) {
                         var $slickTrack = $($slider.find('.slick-track'));
                         var $nextSlide = $($slickTrack[0].children[nextSlide]);
                         var $currentSlide = $($slickTrack[0].children[currentSlide]);
 
                         var $nextSlideAnimElements = $nextSlide.find('[data-animation-in]');
-                        $nextSlideAnimElements.each(function() {
+                        $nextSlideAnimElements.each(function () {
                             addAnimation($(this));
                         });
 
                         var $curSlideAnimElements = $currentSlide.find('[data-animation-in]');
-                        $curSlideAnimElements.each(function() {
+                        $curSlideAnimElements.each(function () {
                             var $el = $(this);
                             var anim = $el.data('animation-in');
 
@@ -122,14 +122,14 @@
                     //////
                     // Change body class according to slider
                     //////
-                    var changeHeaderSkin = function($slider, nextSlide) {
+                    var changeHeaderSkin = function ($slider, nextSlide) {
                         var slide = $slider[0].getElementsByClassName('slider-item')[nextSlide];
                         var headerStyle = slide.dataset.setHeaderSkin;
                         if (headerStyle === undefined) return;
                         document.body.dataset.headerSkin = headerStyle;
                     };
 
-                    $slider.on('beforeChange', function(e, slick, currentSlide, nextSlide) {
+                    $slider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
                         changeHeaderSkin($slider, nextSlide);
                         animateCaptions($slider, currentSlide, nextSlide);
                     });
@@ -138,7 +138,7 @@
 
                     // Animate the slide on script load
                     var $currentSlideAnimeElements = $slider.find('.slick-track .slider-item:first [data-animation-in]');
-                    $currentSlideAnimeElements.each(function() {
+                    $currentSlideAnimeElements.each(function () {
                         addAnimation($(this));
                     });
 
@@ -151,7 +151,7 @@
                         // Left Button
                         var $left = $nav.find('.slick-slider-left');
                         if ($left.length) {
-                            $left.on('click', function() {
+                            $left.on('click', function () {
                                 $slider.slick('slickPrev');
                             });
                         }
@@ -159,7 +159,7 @@
                         // Right Button
                         var $right = $nav.find('.slick-slider-right');
                         if ($right.length) {
-                            $right.on('click', function() {
+                            $right.on('click', function () {
                                 $slider.slick('slickNext');
                             });
                         }
@@ -168,19 +168,19 @@
             });
         },
 
-        shareBlogposts: function() {
+        shareBlogposts: function () {
             var $shareLinksContainer = $('.share-links');
             if (!$shareLinksContainer.length) return;
 
-            $shareLinksContainer.each(function() {
+            $shareLinksContainer.each(function () {
                 var $shareLinks = $(this);
                 var $toggleLink = $shareLinks.find('.entry-share-link');
                 var $socialList = $shareLinks.find('.social-list');
-                $toggleLink.on('click', function() {
+                $toggleLink.on('click', function () {
                     $socialList.toggleClass('d-block');
                 });
 
-                $(document).on('click', function(e) {
+                $(document).on('click', function (e) {
                     var $shareLinksParent = $(e.target).closest('.share-links');
                     if ($socialList.hasClass('d-block')) {
                         if ($shareLinksParent.length === 0 ||
@@ -193,7 +193,7 @@
             });
         },
 
-        magnificPopup: function() {
+        magnificPopup: function () {
             var $popup = $('.popup-youtube, .popup-vimeo, .popup-gmaps');
             if (!$popup.length) return;
 
@@ -207,7 +207,7 @@
             });
         },
 
-        enableTodo: function() {
+        enableTodo: function () {
             var el = document.getElementsByClassName('todo-widget');
             if (!el.length) return;
             for (var i = 0; i < el.length; i++) {
@@ -215,7 +215,7 @@
             }
         },
 
-        enableMenuSearch: function() {
+        enableMenuSearch: function () {
             var el = document.getElementsByClassName('menu-search-trigger');
             if (!el.length) return;
             for (var i = 0; i < el.length; i++) {
@@ -224,21 +224,21 @@
                 var menuSearchBackdrop = menuSearch.getElementsByClassName('menu-search-backdrop')[0];
                 var menuSearchCloseBtn = menuSearch.getElementsByClassName('menu-search-close')[0];
 
-                var menuSearchOpen = function(menuSearch) {
+                var menuSearchOpen = function (menuSearch) {
                     menuSearch.classList.add('menu-search-active');
                     var input = menuSearch.getElementsByTagName('input')[0];
                     input.focus();
                 };
 
-                var menuSearchClose = function(menuSearch) {
+                var menuSearchClose = function (menuSearch) {
                     menuSearch.classList.remove('menu-search-active');
                 };
 
-                menuSearchTrigger.addEventListener('click', function() {
+                menuSearchTrigger.addEventListener('click', function () {
                     menuSearchOpen(menuSearch);
                 });
 
-                document.addEventListener('keydown', function(e) {
+                document.addEventListener('keydown', function (e) {
                     if (e.keyCode === 27) {
                         if (menuSearch.classList.contains('menu-search-active')) {
                             menuSearchClose(menuSearch);
@@ -246,25 +246,25 @@
                     }
                 });
 
-                menuSearchBackdrop.addEventListener('click', function() {
+                menuSearchBackdrop.addEventListener('click', function () {
                     menuSearchClose(menuSearch);
                 });
 
-                menuSearchCloseBtn.addEventListener('click', function() {
+                menuSearchCloseBtn.addEventListener('click', function () {
                     menuSearchClose(menuSearch);
                 });
             }
         },
 
-        enableShoppingWidget: function() {
+        enableShoppingWidget: function () {
             var $el = $('.product_list_widget');
             if (!$el.length) return;
-            $el.each(function() {
+            $el.each(function () {
                 var $productList = $(this);
                 var $miniCartView = $productList.closest('.mini-cart-view');
                 var $menuItem = $productList.closest('.menu-item');
                 var $removeBtn = $productList.find('.btn-remove');
-                $removeBtn.on('click', function() {
+                $removeBtn.on('click', function () {
                     var $list = $(this).closest('li');
                     $list.remove();
 
@@ -275,17 +275,17 @@
             });
         },
 
-        menuToggler: function() {
+        menuToggler: function () {
             var $el = $('.menu-toggler');
-            $el.each(function() {
+            $el.each(function () {
                 var $toggle = $(this);
                 var $target = $($toggle.data('target'));
-                $toggle.on('click', function() {
+                $toggle.on('click', function () {
                     $target.toggleClass('menu-toggle-active');
                     document.body.classList.toggle('menu-overlay-active');
                 });
 
-                var closeMenu = function($target) {
+                var closeMenu = function ($target) {
                     $target.removeClass('menu-toggle-active');
                     document.body.classList.remove('menu-overlay-active');
                 }
@@ -296,7 +296,7 @@
                 icon.className = 'feather-x';
                 removeBtn.appendChild(icon);
                 removeBtn.className = 'remove-btn btn btn-outline-light btn-circle text-primary btn-sm';
-                removeBtn.addEventListener('click', function() {
+                removeBtn.addEventListener('click', function () {
                     closeMenu($target);
                 });
                 $target.prepend(removeBtn);
@@ -308,18 +308,18 @@
                     var backdrop = document.createElement('div');
                     backdrop.className = 'menu-toggle-backdrop';
                     $target[0].parentNode.append(backdrop);
-                    backdrop.addEventListener('click', function() {
+                    backdrop.addEventListener('click', function () {
                         closeMenu($target);
                     });
                 }
                 // End Backdrop
 
                 var $menuHasChild = $target.find('.menu-item-has-children');
-                $menuHasChild.each(function() {
+                $menuHasChild.each(function () {
                     var $menu = $(this);
                     var $submenu = $menu.find('> .sub-menu');
                     var $link = $menu.find('> a');
-                    $link.on('click', function(e) {
+                    $link.on('click', function (e) {
                         $submenu.toggleClass('open-submenu');
                         e.preventDefault();
                     });
@@ -327,13 +327,13 @@
             });
         },
 
-        enableSticky: function() {
+        enableSticky: function () {
             var $el = $('.sticky-wrapper');
             if (!$el.length) return;
             var defaults = {
                 useStickyClasses: true
             };
-            $el.each(function() {
+            $el.each(function () {
                 var $sticky = $(this);
                 var options = $sticky.data('plugin-options');
                 options = $.extend({}, defaults, options);
@@ -347,13 +347,13 @@
             });
         },
 
-        enableCountdown: function() {
+        enableCountdown: function () {
             var $el = $('.countdown');
             if (!$el.length) return;
             var defaults = {
                 contentFormat: '%-D day%!D %H:%M:%S',
             };
-            $el.each(function() {
+            $el.each(function () {
                 var $this = $(this);
                 var options = $this.data('plugin-options');
                 var $content = $this.find('.countdown-content');
@@ -362,12 +362,12 @@
                 $content.html('');
                 options = $.extend({}, defaults, options);
                 var instance = $this.countdown(options.finalDate, options);
-                instance.on('update.countdown', function(e) {
+                instance.on('update.countdown', function (e) {
                     if (e.elapsed) $this[0].dataset.status = 'elapsed';
                     $content.html(e.strftime(options.contentFormat));
                 });
                 if ($this.find('.countdown-completed-content').length) {
-                    instance.on('finish.countdown', function(e) {
+                    instance.on('finish.countdown', function (e) {
                         $this[0].dataset.status = 'finished';
                     });
                 }
@@ -378,15 +378,15 @@
             });
         },
 
-        inputFocus: function() {
+        inputFocus: function () {
             var el = $('input:not([type=checkbox]):not([type=radio]), textarea');
             if (!el.length) return;
 
-            el.each(function() {
+            el.each(function () {
                 var $this = $(this),
                     self = this;
 
-                var hasValueFunction = function() {
+                var hasValueFunction = function () {
                     if (self.value.length > 0) {
                         self.parentNode.classList.add('input-has-value');
                         $(self).closest('.form-group').addClass('input-has-value');
@@ -399,43 +399,43 @@
                 hasValueFunction(this);
                 $this.on('input', hasValueFunction);
 
-                $this.focusin(function() {
+                $this.focusin(function () {
                     this.parentNode.classList.add('input-focused');
                     $this.closest('.form-group').addClass('input-focused');
                 });
-                $this.focusout(function() {
+                $this.focusout(function () {
                     this.parentNode.classList.remove('input-focused');
                     $this.closest('.form-group').removeClass('input-focused');
                 });
 
-                $this.find('.remove-focus').on('click', function() {
+                $this.find('.remove-focus').on('click', function () {
                     $this.emit('focusout');
                 });
             });
         },
 
-        enableSidebar: function() {
+        enableSidebar: function () {
             var sidebars = document.getElementsByClassName('sidebar');
             if (sidebars === null) return;
             try {
-                _.map(sidebars, function(sidebar) {
+                _.map(sidebars, function (sidebar) {
                     if (sidebar.template === undefined) sidebar.template = {};
 
-                    sidebar.template.closeSidebar = function() {
+                    sidebar.template.closeSidebar = function () {
                         sidebar.dataset.templateOpen = 'false';
                         var event = document.createEvent('CustomEvent');
                         event.initCustomEvent('template.sidebar.close');
                         sidebar.dispatchEvent(event);
                     };
 
-                    sidebar.template.openSidebar = function() {
+                    sidebar.template.openSidebar = function () {
                         sidebar.dataset.templateOpen = 'true';
                         var event = document.createEvent('CustomEvent');
                         event.initCustomEvent('template.sidebar.open');
                         sidebar.dispatchEvent(event);
                     };
 
-                    sidebar.template.toggleSidebar = function() {
+                    sidebar.template.toggleSidebar = function () {
                         var a = {
                             'true': true,
                             'false': false
@@ -450,7 +450,7 @@
                     //////
                     // Close sidebar when clicked outside sidebar
                     //////
-                    document.addEventListener('click', function(e) {
+                    document.addEventListener('click', function (e) {
                         if (e.target === sidebar && sidebar.dataset.templateOpen === 'true') {
                             sidebar.template.closeSidebar()
                         }
@@ -459,15 +459,15 @@
                     //////
                     // Close sidebar when 'esc' key pressed
                     //////
-                    document.addEventListener('keydown', function(e) {
+                    document.addEventListener('keydown', function (e) {
                         if (e.keyCode === 27 && sidebar.dataset.templateOpen === 'true') {
                             sidebar.template.closeSidebar()
                         }
                     });
 
                     var closeBtns = sidebar.getElementsByClassName('close');
-                    _.map(closeBtns, function(closeBtn) {
-                        closeBtn.addEventListener('click', function() {
+                    _.map(closeBtns, function (closeBtn) {
+                        closeBtn.addEventListener('click', function () {
                             sidebar.template.closeSidebar();
                         })
                     });
@@ -476,12 +476,12 @@
                     // Menu in sidebar
                     //////
                     var menus = sidebar.getElementsByClassName('menu');
-                    _.map(menus, function(menu) {
+                    _.map(menus, function (menu) {
                         var menusWithSubmenu = menu.getElementsByClassName('menu-item-has-children');
-                        _.map(menusWithSubmenu, function(menuWithSubmenu) {
+                        _.map(menusWithSubmenu, function (menuWithSubmenu) {
                             var submenu = menuWithSubmenu.querySelector(':scope > .sub-menu');
                             var link = menuWithSubmenu.querySelector(':scope > a');
-                            link.addEventListener('click', function() {
+                            link.addEventListener('click', function () {
                                 menuWithSubmenu.classList.toggle('open');
                             });
                         });
@@ -493,26 +493,26 @@
             }
         },
 
-        enableSidebarToggle: function() {
+        enableSidebarToggle: function () {
             var toggles = document.getElementsByClassName('sidebar-toggle');
             if (toggles === null) return;
             try {
-                _.map(toggles, function(toggle) {
+                _.map(toggles, function (toggle) {
                     var trigger = toggle.dataset.templateSidebarTrigger;
                     if (trigger === undefined)
                         throw 'You have not set trigger element in [data-template-sidebar-toggle]';
                     var sidebarTarget = document.querySelector(trigger);
                     if (sidebarTarget === undefined)
                         throw 'No target found for [data-template-sidebar-toggle]';
-                    toggle.addEventListener('click', function() {
+                    toggle.addEventListener('click', function () {
                         sidebarTarget.template.toggleSidebar();
                     });
 
-                    sidebarTarget.addEventListener('template.sidebar.open', function() {
+                    sidebarTarget.addEventListener('template.sidebar.open', function () {
                         toggle.dataset.templateOpen = 'true';
                     });
 
-                    sidebarTarget.addEventListener('template.sidebar.close', function() {
+                    sidebarTarget.addEventListener('template.sidebar.close', function () {
                         toggle.dataset.templateOpen = 'close';
                     });
                 });
@@ -521,13 +521,13 @@
             }
         },
 
-        enableScrollToElement: function() {
+        enableScrollToElement: function () {
             var els = document.getElementsByClassName('scroll-to-element');
             if (els === null) return;
 
             var duration = 300;
 
-            _.map(els, function(el) {
+            _.map(els, function (el) {
                 try {
                     var target = el.dataset.scrollTo;
                     if (target === undefined)
@@ -538,7 +538,7 @@
                     if (el.dataset.scrollToDuration !== undefined)
                         duration = el.dataset.scrollToDuration;
                     duration = parseInt(duration);
-                    el.addEventListener('click', function() {
+                    el.addEventListener('click', function () {
                         var targetOffset = targetElem.offsetTop;
                         var navbarHeight = document.getElementById('navbar').getBoundingClientRect().height;
                         $('html').stop().animate({
@@ -551,11 +551,11 @@
             })
         },
 
-        enableBlogSocialWidget: function() {
+        enableBlogSocialWidget: function () {
             var stickys = document.getElementsByClassName('sticky');
             if (stickys !== null && stickys.length === 0) return;
             var defaults = {};
-            _.each(stickys, function(sticky) {
+            _.each(stickys, function (sticky) {
                 var dataOptions = sticky.dataset.pluginOptions !== undefined ? JSON.parse(sticky.dataset.pluginOptions) : {};
                 var options = _.assign(defaults, dataOptions);
                 var sticky = stickybits(sticky, {
@@ -565,7 +565,7 @@
             });
         },
 
-        enableCountup: function() {
+        enableCountup: function () {
             var elms = document.getElementsByClassName('counter');
             if (elms === null && elms.length === 0) return;
             var defaults = {
@@ -579,13 +579,13 @@
                 separator: ',',
                 decimal: '.',
             };
-            _.each(elms, function(elm) {
+            _.each(elms, function (elm) {
                 var dataOptions = JSON.parse(elm.dataset.pluginOptions);
                 var options = _.assign(defaults, dataOptions);
                 var instance = new CountUp(elm, options.start, options.end, options.decimalPlaces, options.duration, options);
 
                 if (!instance.error) {
-                    var runOnVisible = function() {
+                    var runOnVisible = function () {
                         if (elementInViewport(elm)) {
                             instance.start();
                             window.removeEventListener('scroll', runOnVisible);
@@ -602,22 +602,22 @@
             });
         },
 
-        enableSliderWidget: function() {
+        enableSliderWidget: function () {
             //$( ".price_slider" ).slider();
         },
 
-        enableShopSingleTabs: function() {
+        enableShopSingleTabs: function () {
             try {
                 var wooTabs = document.getElementsByClassName('woocommerce-tabs');
                 if (wooTabs === null || wooTabs.length === 0) return;
-                _.each(wooTabs, function(wooTab) {
+                _.each(wooTabs, function (wooTab) {
                     var tabs = wooTab.getElementsByClassName('tabs');
                     if (tabs === null || tabs.length === 0)
                         throw '.tabs not defined';
                     tabs = tabs[0];
                     var links = tabs.getElementsByTagName('a');
 
-                    var changeTabPanel = function(link) {
+                    var changeTabPanel = function (link) {
                         var href = link.getAttribute('href');
                         var target = document.querySelector(href);
                         if (target === null || target.length === 0) {
@@ -625,7 +625,7 @@
                             return;
                         } else {
                             var panels = target.parentNode.querySelectorAll('[role="tabpanel"]');
-                            _.each(panels, function(panel) {
+                            _.each(panels, function (panel) {
                                 panel.setAttribute('hidden', '');
                             });
                             target.removeAttribute('hidden');
@@ -641,8 +641,8 @@
                         }
                     };
 
-                    _.each(links, function(link) {
-                        link.addEventListener('click', function(e) {
+                    _.each(links, function (link) {
+                        link.addEventListener('click', function (e) {
                             changeTabPanel(link);
                             e.preventDefault();
                         });
@@ -660,18 +660,18 @@
             }
         },
 
-        enableShopPriceRangeSlider: function() {
+        enableShopPriceRangeSlider: function () {
             var $sliders = $('.price_slider');
             if ($sliders.length === 0) return;
             var defaults = {
                 range: true,
             };
-            $sliders.each(function() {
+            $sliders.each(function () {
                 var $slider = $(this);
                 var options = $slider.data('plugin-options');
                 var $amount = $slider.parent('.price_slider_wrapper').find('.price_slider_amount');
                 options = $.extend({}, defaults, options);
-                options.slide = function(e, ui) {
+                options.slide = function (e, ui) {
                     $slider[0].dataset.min = ui.values[0];
                     $slider[0].dataset.max = ui.values[1];
 
@@ -691,7 +691,7 @@
         easing: 'ease-in-out-quad'
     });
 
-    function elementInViewport(el) {
+    function elementInViewport (el) {
         var top = el.offsetTop;
         var left = el.offsetLeft;
         var width = el.offsetWidth;
@@ -711,13 +711,8 @@
         );
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         Unifato.init();
         AOS.refresh();
     });
 })(jQuery);
-
-
-Pace.on('done', function() {
-    document.body.classList.add('pace-completed');
-});
